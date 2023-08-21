@@ -30,8 +30,8 @@ const color = {
 }
 
 const media = {
-  desktop: '(min-width: 1080px)',
-  mobile: '(max-width: 1079px)',
+  desktop: '(min-width: 481px)',
+  mobile: '(max-width: 480px)',
 }
 
 export const theme = {
