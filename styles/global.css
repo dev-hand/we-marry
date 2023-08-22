@@ -1,7 +1,24 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('../public/font/RIDIBatang.otf') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
 html,
 body {
   box-sizing: border-box;
-  font-family: 'Inter', sans-serif;
+  font-family: 'RIDIBatang', sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+span,
+p {
+  line-height: normal;
+  white-space: pre-wrap;
+  color: #484848;
 }
