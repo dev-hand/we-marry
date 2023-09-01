@@ -1,12 +1,10 @@
 import styled from 'styled-components'
 
-export const Gap = styled.div<{
+export const Spacing = styled.div<{
   gap?: number
   vertical?: number
   horizontal?: number
 }>`
-  width: 100%;
-  height: 100%;
   display: flex;
   ${(p) => p.gap && `gap: ${p.gap}px;`}
   ${(p) =>
@@ -17,15 +15,15 @@ export const Gap = styled.div<{
     `padding-top: ${p.vertical}px; padding-bottom: ${p.vertical}px;`}
 `
 
-export const Column = styled(Gap)`
+export const Column = styled(Spacing)`
   flex-direction: column;
 `
 
-export const Row = styled(Gap)`
+export const Row = styled(Spacing)`
   flex-direction: row;
 `
 
-export const Grid = styled(Gap)`
+export const Grid = styled(Spacing)`
   display: grid;
 `
 

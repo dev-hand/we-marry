@@ -17,6 +17,7 @@ const Index: NextPage = () => (
       </div>
       <Content>
         <Intro />
+        <Line />
       </Content>
     </BoxShadow>
   </Media>
@@ -39,6 +40,12 @@ const Content = styled(Column)`
   padding: 20px;
   align-items: center;
   text-align: center;
+`
+
+const Line = styled.div`
+  width: 100%;
+  margin: 80px 0;
+  border: 0.5px solid ${(p) => p.theme.color.lightGray};
 `
 
 export default Index

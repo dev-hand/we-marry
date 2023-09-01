@@ -10,6 +10,8 @@ const color = {
   primary: '#D8BEB2',
   white: '#FEFEFE',
   black: '#484848',
+  lightGray: '#EBEBEB',
+  gray: '#D8D8D8',
   darkGray: '#7B7B7B',
 }
 
