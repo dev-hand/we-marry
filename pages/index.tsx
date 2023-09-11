@@ -3,7 +3,9 @@ import styled from 'styled-components'
 import { NextPage } from 'next'
 import { BackgroundImage } from 'components/common/Image'
 import { Column, Media } from 'components/common/Layout'
-import { Intro } from 'components/Intro'
+import { Invitation } from 'components/Invitation'
+import { WeddingDay } from 'components/WeddingDay'
+import { Gallery } from 'components/Gallery'
 
 const Index: NextPage = () => (
   <Media>
@@ -16,8 +18,11 @@ const Index: NextPage = () => (
         <Gradation />
       </div>
       <Content>
-        <Intro />
+        <Invitation />
         <Line />
+        <WeddingDay />
+        <Line />
+        <Gallery />
       </Content>
     </BoxShadow>
   </Media>

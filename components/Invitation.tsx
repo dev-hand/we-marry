@@ -15,7 +15,7 @@ import { Modal } from 'components/common/Modal'
 import { Contact } from 'components/Contact'
 import { Button } from 'components/common/Button'
 
-export const Intro: React.FC = () => {
+export const Invitation: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Column style={{ width: '100%' }}>
