@@ -33,6 +33,7 @@ const Background = styled(Column)`
   height: 100%;
   justify-content: center;
   background-color: rgba(72, 72, 72, 0.2);
+  z-index: 1;
 `
 
 const Container = styled(Media)`
