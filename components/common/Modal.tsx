@@ -11,9 +11,12 @@ export const Modal: React.FC<{
 }> = ({ children, isOpen, onClose }) => {
   if (!isOpen) return null
   return (
-    <Background>
+    <Background onClick={onClose}>
       <Container>
-        <ModalCard screenWidth={screen.width}>
+        <ModalCard
+          screenWidth={screen.width}
+          onClick={(e) => e.stopPropagation()}
+        >
           {children}
           <CloseText onClick={onClose}>닫기</CloseText>
         </ModalCard>

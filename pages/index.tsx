@@ -23,6 +23,7 @@ const Index: NextPage = () => (
         <WeddingDay />
         <Line />
         <Gallery />
+        <Line />
       </Content>
     </BoxShadow>
   </Media>
