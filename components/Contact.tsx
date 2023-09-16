@@ -16,8 +16,8 @@ export const Contact: React.FC<{
       <SectionText>Contact</SectionText>
       <H1Text>연락처</H1Text>
     </Column>
-    <Column gap={20}>
-      <BaseText>신랑측</BaseText>
+    <Section>
+      <SectionTitleText>신랑측</SectionTitleText>
       {groomPhoneNumber.map((item) => (
         <Row key={item.name} gap={20} style={{ alignItems: 'center' }}>
           <Row gap={10}>
@@ -34,9 +34,9 @@ export const Contact: React.FC<{
           </CopyButton>
         </Row>
       ))}
-    </Column>
-    <Column gap={20}>
-      <BaseText>신부측</BaseText>
+    </Section>
+    <Section>
+      <SectionTitleText>신부측</SectionTitleText>
       {gridePhoneNumber.map((item) => (
         <Row key={item.name} gap={20} style={{ alignItems: 'center' }}>
           <Row gap={10}>
@@ -53,9 +53,14 @@ export const Contact: React.FC<{
           </CopyButton>
         </Row>
       ))}
-    </Column>
+    </Section>
   </Column>
 )
+
+const Section = styled(Column)`
+  gap: 20px;
+  align-items: center;
+`
 
 const CopyButton = styled(Button)`
   display: flex;
@@ -68,4 +73,12 @@ const CopyButton = styled(Button)`
   background-color: ${(p) => p.theme.color.lightGray};
   font-size: 13px;
   color: ${(p) => p.theme.color.darkGray};
+`
+
+const SectionTitleText = styled(BaseText)`
+  width: fit-content;
+  padding: 4px 16px;
+  border-radius: 50px;
+  color: ${(p) => p.theme.color.white};
+  background-color: ${(p) => p.theme.color.primary};
 `

@@ -22,7 +22,7 @@ export interface PostProps {
 }
 
 export interface ParentsName {
-  farther: string
+  father: string
   mother: string
 }
 

@@ -70,7 +70,7 @@ export const Invitation: React.FC<{
             <RowCenter>
               <RowCenter gap={4}>
                 <H3Text>
-                  {groomParentsName.farther} ‧ {groomParentsName.mother}
+                  {groomParentsName.father} ‧ {groomParentsName.mother}
                 </H3Text>
                 <SmallDarkGrayText>의</SmallDarkGrayText>
               </RowCenter>
@@ -87,7 +87,7 @@ export const Invitation: React.FC<{
             <RowCenter>
               <RowCenter gap={4}>
                 <H3Text>
-                  {grideParentsName.farther} ‧ {grideParentsName.mother}
+                  {grideParentsName.father} ‧ {grideParentsName.mother}
                 </H3Text>
                 <SmallDarkGrayText>의</SmallDarkGrayText>
               </RowCenter>

@@ -6,32 +6,38 @@ import { BackgroundImage } from 'components/common/Image'
 import { BaseText } from 'components/common/Text'
 
 const IMAGE_SIZE = 120
-
-export const ImageSlider: React.FC = () => {
+const ARROW_SIZE = 24
+export const ImageSlider: React.FC<{
+  isOpen: boolean
+  onClose: () => void
+  images: string[]
+  index: number
+}> = ({ isOpen, onClose, images, index }) => {
+  if (!isOpen) return null
   return (
     <Background>
       <Media>
         <GalleryImage
-          src='/image/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg'
-          alt='/image/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg'
+          src={images[index]}
+          alt={images[index]}
           width={IMAGE_SIZE}
           height={IMAGE_SIZE}
         />
         <BottomContainer>
-          <BackgroundImage
-            src='/icon/chevron-up-left.svg'
-            style={{ width: 44, height: 44 }}
-          />
-          <CloseButton>닫기</CloseButton>
-          <BackgroundImage
-            src='/icon/chevron-up-right.svg'
-            style={{ width: 44, height: 44 }}
-          />
+          <ArrowBtn src='/icon/chevron-up-left.svg' />
+          <CloseButton onClick={onClose}>닫기</CloseButton>
+          <ArrowBtn src='/icon/chevron-up-right.svg' />
         </BottomContainer>
       </Media>
     </Background>
   )
 }
+
+const ArrowBtn = styled(BackgroundImage)`
+  width: ${ARROW_SIZE}px;
+  height: ${ARROW_SIZE}px;
+  cursor: pointer;
+`
 
 const Background = styled(Column)`
   position: fixed;
