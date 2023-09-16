@@ -7,7 +7,7 @@ import { ImageSlider } from 'components/common/ImageSlider'
 
 const IMAGE_SIZE = 120
 
-export const Gallery: React.FC = () => (
+export const Gallery: React.FC<{ images: string[] }> = ({ images }) => (
   <Column gap={30} style={{ width: '100%' }}>
     <Column gap={10}>
       <SectionText>Gallery</SectionText>

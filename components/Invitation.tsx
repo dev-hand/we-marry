@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import Image from 'next/image'
 import {
   BaseText,
   H1Text,
@@ -14,9 +15,27 @@ import { theme } from 'styles/theme'
 import { Modal } from 'components/common/Modal'
 import { Contact } from 'components/Contact'
 import { Button } from 'components/common/Button'
-import Image from 'next/image'
+import { ParentsName, PhoneNumber } from 'global/type'
 
-export const Invitation: React.FC = () => {
+export const Invitation: React.FC<{
+  groomName: string
+  grideName: string
+  message: string
+  image: string
+  groomParentsName: ParentsName
+  grideParentsName: ParentsName
+  groomPhoneNumber: PhoneNumber[]
+  gridePhoneNumber: PhoneNumber[]
+}> = ({
+  groomName,
+  grideName,
+  message,
+  image,
+  groomParentsName,
+  grideParentsName,
+  groomPhoneNumber,
+  gridePhoneNumber,
+}) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Column style={{ width: '100%' }}>
@@ -24,9 +43,9 @@ export const Invitation: React.FC = () => {
         <Column gap={10}>
           <SectionText>Invitation</SectionText>
           <Row gap={10} style={{ justifyContent: 'center' }}>
-            <H2Text>조용천</H2Text>
+            <H2Text>{groomName}</H2Text>
             <H1Text>&</H1Text>
-            <H1Text>송유진</H1Text>
+            <H1Text>{grideName}</H1Text>
           </Row>
         </Column>
         <Column gap={40}>
@@ -37,10 +56,10 @@ export const Invitation: React.FC = () => {
             />
           </Column>
           <BaseText style={{ lineHeight: '32px', color: theme.color.darkGray }}>
-            {`서로가 마주보며 다져온 사랑을\n이제 함께 한 곳을 바라보며\n걸어갈 수 있는 큰 사랑으로 키우고자 합니다.\n저희 두 사람이 사랑의 이름으로\n지켜나갈 수 있게 앞날을\n축복해 주시면 감사하겠습니다.`}
+            {message}
           </BaseText>
           <Image
-            src='/image/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg'
+            src={image}
             alt='invitation-image'
             width={353}
             height={441}
@@ -50,7 +69,9 @@ export const Invitation: React.FC = () => {
           <Column gap={10} style={{ alignItems: 'center' }}>
             <RowCenter>
               <RowCenter gap={4}>
-                <H3Text>조성규 ‧ 노경남</H3Text>
+                <H3Text>
+                  {groomParentsName.farther} ‧ {groomParentsName.mother}
+                </H3Text>
                 <SmallDarkGrayText>의</SmallDarkGrayText>
               </RowCenter>
               <Row>
@@ -59,20 +80,22 @@ export const Invitation: React.FC = () => {
                 </SmallDarkGrayText>
               </Row>
               <RowCenter gap={4}>
-                <H3Text>조용천</H3Text>
+                <H3Text>{groomName}</H3Text>
                 <SmallDarkGrayText>입니다.</SmallDarkGrayText>
               </RowCenter>
             </RowCenter>
             <RowCenter>
               <RowCenter gap={4}>
-                <H3Text>송일영 ‧ 엄미나</H3Text>
+                <H3Text>
+                  {grideParentsName.farther} ‧ {grideParentsName.mother}
+                </H3Text>
                 <SmallDarkGrayText>의</SmallDarkGrayText>
               </RowCenter>
               <Row>
                 <SmallDarkGrayText style={{ width: 50 }}>딸</SmallDarkGrayText>
               </Row>
               <RowCenter gap={4}>
-                <H3Text>송유진</H3Text>
+                <H3Text>{grideName}</H3Text>
                 <SmallDarkGrayText>입니다.</SmallDarkGrayText>
               </RowCenter>
             </RowCenter>
@@ -81,7 +104,10 @@ export const Invitation: React.FC = () => {
         </Column>
       </Column>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-        <Contact />
+        <Contact
+          groomPhoneNumber={groomPhoneNumber}
+          gridePhoneNumber={gridePhoneNumber}
+        />
       </Modal>
     </Column>
   )
