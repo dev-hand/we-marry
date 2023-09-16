@@ -1,7 +1,7 @@
 /** @type {import('next').NextConfig} */
 
 const debug = process.env.NODE_ENV !== 'production'
-const repository = 'wedding-card'
+const repository = 'we-marry'
 
 const nextConfig = {
   // reactStrictMode: true,
@@ -13,7 +13,7 @@ const nextConfig = {
   },
   images: {
     loader: 'imgix',
-    path: ['https://dev-hand.github.io/wedding-card'],
+    path: ['https://dev-hand.github.io/we-marry'],
   },
 }
 
