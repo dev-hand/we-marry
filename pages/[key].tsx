@@ -47,12 +47,9 @@ interface Props {
 
 const Post: NextPage<Props> = ({ data }) => {
   const router = useRouter()
-  console.log(router.asPath)
-  console.log(router.asPath.split('/'))
-  console.log(router.asPath.split('/')[2])
-  const key = IS_DEV
-    ? router.asPath.replace(PREFIX, '').replaceAll('/', '')
-    : router.asPath.split('/')[2]
+  const key = router.asPath
+    .split('/')
+    .find((item) => USER_KEYS.includes(item)) as string
   const keyIndex = USER_KEYS.indexOf(key)
   const {
     thumbnail,
