@@ -8,6 +8,7 @@ import { Gallery } from 'components/Gallery'
 import {
   GOOGLE_SHEET_API_KEY,
   GOOGLE_SPREAD_SHEET_ID,
+  IS_DEV,
   PREFIX,
   USER_KEYS,
 } from 'global/constant'
@@ -46,7 +47,9 @@ interface Props {
 
 const Post: NextPage<Props> = ({ data }) => {
   const router = useRouter()
-  const key = router.asPath.replace(PREFIX, '').replaceAll('/', '')
+  const key = IS_DEV
+    ? router.asPath.replace(PREFIX, '').replaceAll('/', '')
+    : router.asPath.split('/')[2]
   const keyIndex = USER_KEYS.indexOf(key)
   const {
     thumbnail,
