@@ -70,7 +70,7 @@ const Post: NextPage<Props> = ({ data }) => {
     address,
     location,
     calendarImage,
-  }: PostProps = JSON.parse(data.values[keyIndex])
+  }: PostProps = JSON.parse(data.values[0])
   return (
     <Media>
       <BoxShadow>
