@@ -48,13 +48,11 @@ interface Props {
 
 const Post: NextPage<Props> = ({ data }) => {
   const router = useRouter()
+  console.log('0 >>> ', router.asPath)
   const key = router.asPath.replaceAll('/', '')
+  console.log('1 >>> ', key)
   const keyIndex = USER_KEYS.indexOf(key)
-  console.log('1 >>> ', data)
-  console.log('2 >>> ', data.values)
-  console.log('3 >>> ', data.values[0])
-  console.log('4 >>> ', data.values[keyIndex])
-  console.log('5 >>> ', data.values[keyIndex].toString())
+  console.log('2 >>> ', keyIndex)
   const {
     thumbnail,
     images,
@@ -72,7 +70,7 @@ const Post: NextPage<Props> = ({ data }) => {
     address,
     location,
     calendarImage,
-  }: PostProps = JSON.parse(data.values[keyIndex].toString())
+  }: PostProps = JSON.parse(data.values[keyIndex])
   return (
     <Media>
       <BoxShadow>
