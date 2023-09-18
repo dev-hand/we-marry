@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
@@ -47,31 +47,40 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ data }) => {
+  console.log('######')
   const router = useRouter()
   const key = router.asPath.replaceAll('/', '')
   const keyIndex = USER_KEYS.indexOf(key)
-  const {
-    thumbnail,
-    images,
-    groomName,
-    groomParentsName,
-    grideAccount,
-    grideName,
-    grideParentsName,
-    gridePhoneNumber,
-    groomAccount,
-    groomPhoneNumber,
-    trafficInfo,
-    weddingDate,
-    message,
-    address,
-    location,
-    calendarImage,
-  }: PostProps = JSON.parse(data.values[keyIndex])
+  const [unitData, setUnitData] = useState()
+  console.log(1, data)
+  useEffect(() => {
+    console.log(3, data)
+    // const {
+    //   thumbnail,
+    //   images,
+    //   groomName,
+    //   groomParentsName,
+    //   grideAccount,
+    //   grideName,
+    //   grideParentsName,
+    //   gridePhoneNumber,
+    //   groomAccount,
+    //   groomPhoneNumber,
+    //   trafficInfo,
+    //   weddingDate,
+    //   message,
+    //   address,
+    //   location,
+    //   calendarImage,
+    // }: PostProps = JSON.parse(data.values[keyIndex])
+    setUnitData(JSON.parse(data.values[keyIndex]))
+  }, [data])
+
+  console.log(2, unitData)
   return (
     <Media>
       <BoxShadow>
-        <MainCover thumbnail={thumbnail} />
+        {/* <MainCover thumbnail={thumbnail} />
         <Content>
           <Invitation
             message={message}
@@ -88,7 +97,7 @@ const Post: NextPage<Props> = ({ data }) => {
           <Line />
           <Gallery images={images} />
           <Line />
-        </Content>
+        </Content> */}
       </BoxShadow>
     </Media>
   )
