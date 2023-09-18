@@ -8,6 +8,7 @@ import { Gallery } from 'components/Gallery'
 import {
   GOOGLE_SHEET_API_KEY,
   GOOGLE_SPREAD_SHEET_ID,
+  PREFIX,
   USER_KEYS,
 } from 'global/constant'
 import { useRouter } from 'next/router'
@@ -47,12 +48,8 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ data }) => {
-  const router = useRouter()
-  console.log('0 >>> ', router.asPath)
-  const key = router.asPath.replaceAll('/', '')
-  console.log('1 >>> ', key)
+  const key = window.location.href.replace(PREFIX, '').replaceAll('/', '')
   const keyIndex = USER_KEYS.indexOf(key)
-  console.log('2 >>> ', keyIndex)
   const {
     thumbnail,
     images,
@@ -70,7 +67,7 @@ const Post: NextPage<Props> = ({ data }) => {
     address,
     location,
     calendarImage,
-  }: PostProps = JSON.parse(data.values[0])
+  }: PostProps = JSON.parse(data.values[keyIndex])
   return (
     <Media>
       <BoxShadow>
