@@ -11,9 +11,9 @@ import {
   PREFIX,
   USER_KEYS,
 } from 'global/constant'
-import { useRouter } from 'next/router'
 import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
+import { useRouter } from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = USER_KEYS.map((key) => {
@@ -32,10 +32,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async () => {
   const data = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
-  ).then((res) => {
-    console.log('res >> ', res)
-    return res.json()
-  })
+  ).then((res) => res.json())
   return {
     props: { data },
   }
@@ -48,7 +45,8 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ data }) => {
-  const key = window.location.href.replace(PREFIX, '').replaceAll('/', '')
+  const router = useRouter()
+  const key = router.asPath.replace(PREFIX, '').replaceAll('/', '')
   const keyIndex = USER_KEYS.indexOf(key)
   const {
     thumbnail,
