@@ -31,7 +31,10 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async () => {
   const data = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
-  ).then((res) => res.json())
+  ).then((res) => {
+    console.log('res >> ', res)
+    return res.json()
+  })
   return {
     props: { data },
   }
