@@ -8,8 +8,6 @@ import { Gallery } from 'components/Gallery'
 import {
   GOOGLE_SHEET_API_KEY,
   GOOGLE_SPREAD_SHEET_ID,
-  IS_DEV,
-  PREFIX,
   USER_KEYS,
 } from 'global/constant'
 import { PostProps } from 'global/type'
