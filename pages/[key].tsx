@@ -49,10 +49,10 @@ const Post: NextPage<Props> = ({ data }) => {
   const router = useRouter()
   console.log(router.asPath)
   console.log(router.asPath.split('/'))
-  console.log(router.asPath.split('/')[1])
+  console.log(router.asPath.split('/')[2])
   const key = IS_DEV
     ? router.asPath.replace(PREFIX, '').replaceAll('/', '')
-    : router.asPath.split('/')[1]
+    : router.asPath.split('/')[2]
   const keyIndex = USER_KEYS.indexOf(key)
   const {
     thumbnail,
