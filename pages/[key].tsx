@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
@@ -47,40 +47,36 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ data }) => {
-  console.log('######')
   const router = useRouter()
   const key = router.asPath.replaceAll('/', '')
   const keyIndex = USER_KEYS.indexOf(key)
-  const [unitData, setUnitData] = useState()
-  console.log(1, data)
-  useEffect(() => {
-    console.log(3, data)
-    // const {
-    //   thumbnail,
-    //   images,
-    //   groomName,
-    //   groomParentsName,
-    //   grideAccount,
-    //   grideName,
-    //   grideParentsName,
-    //   gridePhoneNumber,
-    //   groomAccount,
-    //   groomPhoneNumber,
-    //   trafficInfo,
-    //   weddingDate,
-    //   message,
-    //   address,
-    //   location,
-    //   calendarImage,
-    // }: PostProps = JSON.parse(data.values[keyIndex])
-    setUnitData(JSON.parse(data.values[keyIndex]))
-  }, [data])
-
-  console.log(2, unitData)
+  console.log('1 >>> ', data)
+  console.log('2 >>> ', data.values)
+  console.log('3 >>> ', data.values[0])
+  console.log('4 >>> ', data.values[keyIndex])
+  console.log('5 >>> ', data.values[keyIndex].toString())
+  const {
+    thumbnail,
+    images,
+    groomName,
+    groomParentsName,
+    grideAccount,
+    grideName,
+    grideParentsName,
+    gridePhoneNumber,
+    groomAccount,
+    groomPhoneNumber,
+    trafficInfo,
+    weddingDate,
+    message,
+    address,
+    location,
+    calendarImage,
+  }: PostProps = JSON.parse(data.values[keyIndex].toString())
   return (
     <Media>
       <BoxShadow>
-        {/* <MainCover thumbnail={thumbnail} />
+        <MainCover thumbnail={thumbnail} />
         <Content>
           <Invitation
             message={message}
@@ -97,7 +93,7 @@ const Post: NextPage<Props> = ({ data }) => {
           <Line />
           <Gallery images={images} />
           <Line />
-        </Content> */}
+        </Content>
       </BoxShadow>
     </Media>
   )
