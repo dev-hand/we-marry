@@ -1,0 +1,51 @@
+{
+  "calendarImage": "/image/cyc-syj/calendar.png",
+  "groomPhoneNumber": [{ "phoneNumber": "010-2222-2222", "name": "조용천" }],
+  "gridePhoneNumber": [{ "phoneNumber": "010-2222-2222", "name": "조용천" }],
+  "thumbnail": "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_d029a1ab5ff646e7b1dcecf3730e77cb_w1280.jpg",
+  "images": [
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg",
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg",
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg",
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg",
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg",
+    "/image/cyc-syj/Nm3TWU_mcard_2023-05-19_1dc298371df344a18110c234d34d60f8_w1280.jpg"
+  ],
+  "groomName": "조용천",
+  "groomParentsName": { "father": "조성규", "mother": "노경남" },
+  "grideName": "송유진",
+  "grideParentsName": { "father": "송일영", "mother": "엄미나" },
+  "address": "서울 구로구 경인로 343",
+  "location": "디큐브시티 더세인트 6층 그랜드볼륨",
+  "trafficInfo": {
+    "car": "네비게이션 '서울웨딩타워' 혹은 '서울시 송파구 양재대로 932' 검색",
+    "metro": "가락시장역 3,8호선 2번출구 도보 5분",
+    "bus": "가락시장역 3,8호선 2번출구 도보 5분"
+  },
+  "groomAccount": [
+    {
+      "bankName": "농협",
+      "accountNumber": "110-232-149232",
+      "accountName": "조용천"
+    },
+    {
+      "bankName": "신한",
+      "accountNumber": "110-232-149232",
+      "accountName": "조성규"
+    }
+  ],
+  "grideAccount": [
+    {
+      "bankName": "농협",
+      "accountNumber": "110-232-149232",
+      "accountName": "송유진"
+    },
+    {
+      "bankName": "신한",
+      "accountNumber": "110-232-149232",
+      "accountName": "송일영"
+    }
+  ],
+  "weddingDate": "2023/09/18 12:00",
+  "message": "유일한 두사람이 만나\n성실하고 애틋하게 사랑하며\n용기가 되고 빛이 되어\n천천히 걸어가겠습니다.\n\n애정을 담아 축하해주세요.\n더 없는 격려와 기쁨으로\n간직하겠습니다."
+}
