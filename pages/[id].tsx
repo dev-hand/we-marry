@@ -24,15 +24,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-// export const getStaticProps: GetStaticProps = async (context) => {
-//   const id = context.params?.id as string
-//   const response = await fetch(decodeURI(`${PREFIX}/data/${id}.json`))
-//   const post: PostProps = await response.json()
-//   return {
-//     props: { post },
-//   }
-// }
-
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string
   const data = await fetch(
@@ -49,10 +40,6 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ id, post }) => {
-  // const router = useRouter()
-  // const id = router.asPath
-  //   .split('/')
-  //   .find((item) => postIds.includes(item)) as string
   const index = postIds.indexOf(id)
   const {
     // trafficInfo,
