@@ -8,17 +8,18 @@ import { Gallery } from 'components/Gallery'
 import {
   GOOGLE_SHEET_API_KEY,
   GOOGLE_SPREAD_SHEET_ID,
-  USER_KEYS,
+  IDS,
+  PREFIX,
 } from 'global/constant'
 import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
 import { useRouter } from 'next/router'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = USER_KEYS.map((key) => {
+  const paths = IDS.map((id) => {
     return {
       params: {
-        key,
+        id,
       },
     }
   })
@@ -28,27 +29,35 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async () => {
-  const data = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
-  ).then((res) => res.json())
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id
+  const data = await fetch(`${PREFIX}/data/${id}.json`).then((res) =>
+    res.json(),
+  )
   return {
-    props: { data },
+    props: { data: data },
   }
 }
+// export const getStaticProps: GetStaticProps = async () => {
+//   const data = await fetch(
+//     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
+//   ).then((res) => res.json())
+//   return {
+//     props: { data },
+//   }
+// }
 
 interface Props {
-  data: {
-    values: string[]
-  }
+  data: PostProps
 }
 
 const Post: NextPage<Props> = ({ data }) => {
-  const router = useRouter()
-  const key = router.asPath
-    .split('/')
-    .find((item) => USER_KEYS.includes(item)) as string
-  const keyIndex = USER_KEYS.indexOf(key)
+  console.log(data)
+  // const router = useRouter()
+  // const id = router.asPath
+  //   .split('/')
+  //   .find((item) => IDS.includes(item)) as string
+  // const idIndex = IDS.indexOf(id)
   const {
     thumbnail,
     images,
@@ -66,7 +75,7 @@ const Post: NextPage<Props> = ({ data }) => {
     address,
     location,
     calendarImage,
-  }: PostProps = JSON.parse(data.values[keyIndex])
+  }: PostProps = data
   return (
     <Media>
       <BoxShadow>
