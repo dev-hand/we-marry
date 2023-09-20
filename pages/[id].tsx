@@ -73,7 +73,7 @@ const Post: NextPage<Props> = ({ id, post }) => {
         description={`${moment(new Date(weddingDate)).format(
           'YYYY년 M월 D일 HH시 mm분',
         )} ${address} ${location}`}
-        image={thumbnail}
+        image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
       <Media>
