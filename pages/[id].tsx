@@ -15,6 +15,7 @@ import { MainCover } from 'components/MainCover'
 import { postIds } from 'public/data'
 import { Seo } from 'components/common/Seo'
 import moment from 'moment'
+import { Footer } from 'components/common/Footer'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -69,7 +70,7 @@ const Post: NextPage<Props> = ({ id, post }) => {
   return (
     <>
       <Seo
-        title={`${groomName} & ${grideName}의 결혼식에 초대합니다`}
+        title={`${groomName} ♥︎ ${grideName} 결혼합니다`}
         description={`${moment(new Date(weddingDate)).format(
           'YYYY년 M월 D일 HH시 mm분',
         )} ${address} ${location}`}
@@ -99,6 +100,15 @@ const Post: NextPage<Props> = ({ id, post }) => {
             <Gallery images={images} />
             <Line />
           </Content>
+          <Footer
+            id={id}
+            groomName={groomName}
+            grideName={grideName}
+            thumbnail={thumbnail}
+            address={address}
+            location={location}
+            weddingDate={weddingDate}
+          />
         </BoxShadow>
       </Media>
     </>
