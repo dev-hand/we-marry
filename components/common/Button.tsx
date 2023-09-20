@@ -6,6 +6,7 @@ export const Button = styled.button`
   border-radius: 50px;
   border: 1px solid ${(p) => p.theme.color.gray};
   font-size: ${(p) => p.theme.size.default};
+  color: ${(p) => p.theme.color.black};
   background-color: ${(p) => p.theme.color.white};
   cursor: pointer;
   transition: 0.2s;
