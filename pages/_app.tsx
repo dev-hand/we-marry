@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <Head>
-        <title>Wedding Card</title>
+        <title>we get marry</title>
       </Head>
       <PortfolioProvider value={PREFIX}>
         <ThemeProvider theme={theme}>

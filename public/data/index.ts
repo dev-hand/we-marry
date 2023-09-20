@@ -1,1 +1,1 @@
-export const ids = ['cyc-syj']
+export const postIds = ['cyc-syj']

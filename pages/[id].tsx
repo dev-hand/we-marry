@@ -1,22 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
 import { Invitation } from 'components/Invitation'
 import { WeddingDay } from 'components/WeddingDay'
 import { Gallery } from 'components/Gallery'
-import {
-  GOOGLE_SHEET_API_KEY,
-  GOOGLE_SPREAD_SHEET_ID,
-  PREFIX,
-} from 'global/constant'
+import { GOOGLE_SHEET_API_KEY, GOOGLE_SPREAD_SHEET_ID } from 'global/constant'
 import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
-import { useRouter } from 'next/router'
-import { ids } from 'public/data'
+import { postIds } from 'public/data'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = ids.map((id) => {
+  const paths = postIds.map((id) => {
     return {
       params: {
         id,
@@ -29,55 +24,54 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id as string
-  const data = await fetch(decodeURI(`${PREFIX}/data/${id}.json`), {
-    headers: { Accept: 'application/json' },
-  }).then((res) => {
-    console.log(res)
-    return res.json()
-  })
-  return {
-    props: { data },
-  }
-}
-// export const getStaticProps: GetStaticProps = async () => {
-//   const data = await fetch(
-//     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
-//   ).then((res) => res.json())
+// export const getStaticProps: GetStaticProps = async (context) => {
+//   const id = context.params?.id as string
+//   const response = await fetch(decodeURI(`${PREFIX}/data/${id}.json`))
+//   const post: PostProps = await response.json()
 //   return {
-//     props: { data },
+//     props: { post },
 //   }
 // }
 
-interface Props {
-  data: PostProps
+export const getStaticProps: GetStaticProps = async (context) => {
+  const id = context.params?.id as string
+  const data = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
+  ).then((res) => res.json())
+  return {
+    props: { id, post: data.values },
+  }
 }
 
-const Post: NextPage<Props> = ({ data }) => {
+interface Props {
+  id: string
+  post: string[]
+}
+
+const Post: NextPage<Props> = ({ id, post }) => {
   // const router = useRouter()
   // const id = router.asPath
   //   .split('/')
-  //   .find((item) => IDS.includes(item)) as string
-  // const idIndex = IDS.indexOf(id)
+  //   .find((item) => postIds.includes(item)) as string
+  const index = postIds.indexOf(id)
   const {
+    // trafficInfo,
+    // grideAccount,
+    // groomAccount,
+    // address,
+    // location,
     thumbnail,
     images,
     groomName,
     groomParentsName,
-    grideAccount,
     grideName,
     grideParentsName,
     gridePhoneNumber,
-    groomAccount,
     groomPhoneNumber,
-    trafficInfo,
     weddingDate,
     message,
-    address,
-    location,
     calendarImage,
-  }: PostProps = data
+  }: PostProps = JSON.parse(post[index])
 
   return (
     <Media>
