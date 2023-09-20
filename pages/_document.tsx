@@ -33,10 +33,6 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
-          <meta property='og:url' content='' />
-          <meta property='og:title' content='' />
-          <meta property='og:image' content='' />
-          <meta property='og:description' content='' />
           <link rel='icon' href={`${PREFIX}/icon/leaf.svg`} />
         </Head>
         <body>

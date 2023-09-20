@@ -5,10 +5,16 @@ import { Column, Media } from 'components/common/Layout'
 import { Invitation } from 'components/Invitation'
 import { WeddingDay } from 'components/WeddingDay'
 import { Gallery } from 'components/Gallery'
-import { GOOGLE_SHEET_API_KEY, GOOGLE_SPREAD_SHEET_ID } from 'global/constant'
+import {
+  GOOGLE_SHEET_API_KEY,
+  GOOGLE_SPREAD_SHEET_ID,
+  PREFIX,
+} from 'global/constant'
 import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
 import { postIds } from 'public/data'
+import { Seo } from 'components/common/Seo'
+import moment from 'moment'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -45,8 +51,8 @@ const Post: NextPage<Props> = ({ id, post }) => {
     // trafficInfo,
     // grideAccount,
     // groomAccount,
-    // address,
-    // location,
+    address,
+    location,
     thumbnail,
     images,
     groomName,
@@ -61,28 +67,41 @@ const Post: NextPage<Props> = ({ id, post }) => {
   }: PostProps = JSON.parse(post[index])
 
   return (
-    <Media>
-      <BoxShadow>
-        <MainCover thumbnail={thumbnail} />
-        <Content>
-          <Invitation
-            message={message}
-            grideName={grideName}
-            grideParentsName={grideParentsName}
-            gridePhoneNumber={gridePhoneNumber}
-            groomName={groomName}
-            groomParentsName={groomParentsName}
-            groomPhoneNumber={groomPhoneNumber}
-            image={images[0]}
-          />
-          <Line />
-          <WeddingDay weddingDate={weddingDate} calendarImage={calendarImage} />
-          <Line />
-          <Gallery images={images} />
-          <Line />
-        </Content>
-      </BoxShadow>
-    </Media>
+    <>
+      <Seo
+        title={`${groomName} & ${grideName}의 결혼식에 초대합니다`}
+        description={`${moment(new Date(weddingDate)).format(
+          'YYYY년 M월 D일 HH시 mm분',
+        )} ${address} ${location}`}
+        image={thumbnail}
+        url={`${PREFIX}/${id}`}
+      />
+      <Media>
+        <BoxShadow>
+          <MainCover thumbnail={thumbnail} />
+          <Content>
+            <Invitation
+              message={message}
+              grideName={grideName}
+              grideParentsName={grideParentsName}
+              gridePhoneNumber={gridePhoneNumber}
+              groomName={groomName}
+              groomParentsName={groomParentsName}
+              groomPhoneNumber={groomPhoneNumber}
+              image={images[0]}
+            />
+            <Line />
+            <WeddingDay
+              weddingDate={weddingDate}
+              calendarImage={calendarImage}
+            />
+            <Line />
+            <Gallery images={images} />
+            <Line />
+          </Content>
+        </BoxShadow>
+      </Media>
+    </>
   )
 }
 
