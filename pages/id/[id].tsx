@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
@@ -8,15 +8,15 @@ import { Gallery } from 'components/Gallery'
 import {
   GOOGLE_SHEET_API_KEY,
   GOOGLE_SPREAD_SHEET_ID,
-  IDS,
   PREFIX,
 } from 'global/constant'
 import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
 import { useRouter } from 'next/router'
+import { ids } from 'public/data'
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = IDS.map((id) => {
+  const paths = ids.map((id) => {
     return {
       params: {
         id,
@@ -30,12 +30,15 @@ export const getStaticPaths: GetStaticPaths = async () => {
 }
 
 export const getStaticProps: GetStaticProps = async (context) => {
-  const id = context.params?.id
-  const data = await fetch(`${PREFIX}/data/${id}.json`).then((res) =>
-    res.json(),
-  )
+  const id = context.params?.id as string
+  const data = await fetch(decodeURI(`${PREFIX}/data/${id}.json`), {
+    headers: { Accept: 'application/json' },
+  }).then((res) => {
+    console.log(res)
+    return res.json()
+  })
   return {
-    props: { data: data },
+    props: { data },
   }
 }
 // export const getStaticProps: GetStaticProps = async () => {
@@ -52,7 +55,6 @@ interface Props {
 }
 
 const Post: NextPage<Props> = ({ data }) => {
-  console.log(data)
   // const router = useRouter()
   // const id = router.asPath
   //   .split('/')
@@ -76,6 +78,7 @@ const Post: NextPage<Props> = ({ data }) => {
     location,
     calendarImage,
   }: PostProps = data
+
   return (
     <Media>
       <BoxShadow>

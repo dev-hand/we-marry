@@ -9,4 +9,3 @@ export const IS_BROWSER =
 export const GOOGLE_SHEET_API_KEY = 'AIzaSyBeaXgJ8ECfUcbxtehALGrnGbHT3nBTRYE'
 export const GOOGLE_SPREAD_SHEET_ID =
   '1819d6QMC5_EBlThHSC1CQwhOe5hThLf4OaxvoUv1pIY'
-export const IDS = ['cyc-syj']
