@@ -3,7 +3,7 @@ import Image from 'next/image'
 import { Column, Row } from 'components/common/Layout'
 import { H1Text, SectionText } from 'components/common/Text'
 import { getDiffDate } from 'global/format'
-import { Chip } from './common/Chip'
+import { Chip } from 'components/common/Chip'
 import moment from 'moment'
 
 export const WeddingDay: React.FC<{
@@ -28,7 +28,7 @@ export const WeddingDay: React.FC<{
           src={calendarImage}
           alt='calendar'
           width={353}
-          height={258}
+          height={220}
           objectFit='cover'
           layout='responsive'
         />
