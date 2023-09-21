@@ -1,20 +1,34 @@
-export const diffDateFormat = (date1: string, date2: string) => {
-  let diffDate1 = new Date(date1)
-  let diffDate2 = new Date(date2)
+import moment from 'moment'
 
-  diffDate1 = new Date(
-    diffDate1.getFullYear(),
-    diffDate1.getMonth() + 1,
-    diffDate1.getDate(),
-  )
-  diffDate2 = new Date(
-    diffDate2.getFullYear(),
-    diffDate2.getMonth() + 1,
-    diffDate2.getDate(),
-  )
+export const getDiffDate = (prevDate: string, nextDate: string) => {
+  let prev = new Date(prevDate)
+  let next = new Date(nextDate)
 
-  let diff = diffDate2.getTime() - diffDate1.getTime()
-  diff = Math.ceil(diff / (1000 * 3600 * 24))
+  prev = new Date(prev.getFullYear(), prev.getMonth() + 1, prev.getDate())
+  next = new Date(next.getFullYear(), next.getMonth() + 1, next.getDate())
 
-  return diff
+  let diffDate = next.getTime() - prev.getTime()
+  diffDate = Math.ceil(diffDate / (1000 * 3600 * 24))
+
+  return diffDate
+}
+
+export const getWeekDay = (date: string) => {
+  const week = ['일', '월', '화', '수', '목', '금', '토']
+  const weekDay = week[new Date(date).getDay()]
+
+  return weekDay
+}
+
+export const getFullWeddingDate = (date: string) => {
+  const _date = new Date(date)
+  const momentDate = moment(_date)
+  const day = momentDate.format('M월 D일')
+  const week = getWeekDay(date) + '요일'
+  const hour = momentDate.format('H시')
+  const time = _date.getMinutes() === 0 ? '' : _date.getMinutes() + '분'
+  const amOrPm = momentDate.format('A') === 'PM' ? '오후' : '오전'
+  const fullDate = `${day} ${week} ${amOrPm} ${hour} ${time}`
+
+  return fullDate
 }

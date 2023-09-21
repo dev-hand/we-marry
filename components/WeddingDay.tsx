@@ -2,15 +2,15 @@ import React from 'react'
 import Image from 'next/image'
 import { Column } from 'components/common/Layout'
 import { H1Text, SectionText } from 'components/common/Text'
-import { diffDateFormat } from 'global/format'
+import { getDiffDate } from 'global/format'
 
 export const WeddingDay: React.FC<{
   weddingDate: string
   calendarImage: string
 }> = ({ weddingDate, calendarImage }) => {
-  const diffDate = diffDateFormat(new Date().toString(), weddingDate)
+  const diffDate = getDiffDate(new Date().toString(), weddingDate)
   const dDay =
-    diffDate === 0 ? '오늘 결혼합니다.' : `결혼식까지 ${diffDate}일 남았습니다.`
+    diffDate === 0 ? '오늘 결혼합니다.' : `결혼식까지 ${diffDate}일 남았습니다`
 
   return (
     <Column gap={30} style={{ width: '100%' }}>

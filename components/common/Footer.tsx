@@ -1,10 +1,12 @@
 import React from 'react'
+import styled from 'styled-components'
+import Link from 'next/link'
+import moment from 'moment'
 import { Column, Row } from 'components/common/Layout'
 import { BackgroundImage } from './Image'
-import { BaseText } from './Text'
-import { theme } from 'styles/theme'
+import { BaseText, SmallText } from './Text'
 import { PREFIX } from 'global/constant'
-import moment from 'moment'
+import { Card } from './Card'
 
 declare global {
   interface Window {
@@ -33,50 +35,83 @@ export const Footer: React.FC<Props> = ({
   weddingDate,
 }) => {
   return (
-    <Column
-      vertical={40}
-      style={{
-        width: '100%',
-        alignItems: 'center',
-        backgroundColor: theme.color.secondary,
-      }}
-    >
-      <Row
-        gap={10}
-        style={{ alignItems: 'center', cursor: 'pointer' }}
-        onClick={() => {
-          window.Kakao.init('7f507b714b35d40245268ee3378570c7')
-          window.Kakao.Share.sendDefault({
-            objectType: 'feed',
-            content: {
-              title: `${groomName} ♥︎ ${grideName} 결혼합니다`,
-              description: `${moment(new Date(weddingDate)).format(
-                'YYYY년 M월 D일 HH시 mm분',
-              )} ${address} ${location}`,
-              imageUrl: `${PREFIX}/${thumbnail}`,
-              link: {
-                mobileWebUrl: `${PREFIX}/${id}`,
-                webUrl: `${PREFIX}/${id}`,
-              },
-            },
-            buttons: [
-              {
-                title: '청첩장 보러가기',
+    <MainContainer>
+      <Column gap={20}>
+        <BtnWrapper
+          onClick={() => {
+            window.Kakao.init('7f507b714b35d40245268ee3378570c7')
+            window.Kakao.Share.sendDefault({
+              objectType: 'feed',
+              content: {
+                title: `${groomName} ♥︎ ${grideName} 결혼합니다`,
+                description: `${moment(new Date(weddingDate)).format(
+                  'YYYY년 M월 D일 HH시 mm분',
+                )} ${address} ${location}`,
+                imageUrl: `${PREFIX}/${thumbnail}`,
                 link: {
                   mobileWebUrl: `${PREFIX}/${id}`,
                   webUrl: `${PREFIX}/${id}`,
                 },
               },
-            ],
-          })
-        }}
-      >
-        <BackgroundImage
-          src='/icon/kakao.svg'
-          style={{ width: 24, height: 24 }}
-        />
-        <BaseText>카카오톡 공유하기</BaseText>
-      </Row>
-    </Column>
+              buttons: [
+                {
+                  title: '청첩장 보러가기',
+                  link: {
+                    mobileWebUrl: `${PREFIX}/${id}`,
+                    webUrl: `${PREFIX}/${id}`,
+                  },
+                },
+              ],
+            })
+          }}
+        >
+          <BackgroundImage
+            src='/icon/kakao.svg'
+            style={{ width: 24, height: 24 }}
+          />
+          <BaseText>카카오톡 공유하기</BaseText>
+        </BtnWrapper>
+        <BtnWrapper>
+          <BackgroundImage
+            src='/icon/link.svg'
+            style={{ width: 24, height: 24 }}
+          />
+          <BaseText>링크주소 복사하기</BaseText>
+        </BtnWrapper>
+      </Column>
+      <Card vertical={20} horizontal={20}>
+        <DescText>재능 기부 목적으로 만든 무료 청첩장입니다</DescText>
+        <DescText>
+          서비스 문의는{' '}
+          <Link href=''>
+            <a>여기를 눌러주세요</a>
+          </Link>
+        </DescText>
+      </Card>
+    </MainContainer>
   )
 }
+
+const MainContainer = styled(Column)`
+  gap: 30px;
+  width: 100%;
+  align-items: center;
+  padding: 40px 0;
+  background-color: ${(p) => p.theme.color.secondary};
+`
+
+const BtnWrapper = styled(Row)`
+  gap: 10px;
+  align-items: center;
+  cursor: pointer;
+`
+
+const DescText = styled(SmallText)`
+  color: ${(p) => p.theme.color.darkGray};
+  line-height: 22px;
+  text-align: center;
+  a {
+    color: ${(p) => p.theme.color.black};
+    text-decoration: underline;
+  }
+`

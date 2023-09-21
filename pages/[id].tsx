@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import moment from 'moment'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
 import { Invitation } from 'components/Invitation'
@@ -14,8 +15,9 @@ import { PostProps } from 'global/type'
 import { MainCover } from 'components/MainCover'
 import { postIds } from 'public/data'
 import { Seo } from 'components/common/Seo'
-import moment from 'moment'
 import { Footer } from 'components/common/Footer'
+import { Location } from 'components/Location'
+import { getFullWeddingDate, getWeekDay } from 'global/format'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -71,9 +73,7 @@ const Post: NextPage<Props> = ({ id, post }) => {
     <>
       <Seo
         title={`${groomName} ♥︎ ${grideName} 결혼합니다`}
-        description={`${moment(new Date(weddingDate)).format(
-          'YYYY년 M월 D일 HH시 mm분',
-        )} ${address} ${location}`}
+        description={getFullWeddingDate(weddingDate)}
         image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
@@ -99,6 +99,7 @@ const Post: NextPage<Props> = ({ id, post }) => {
             <Line />
             <Gallery images={images} />
             <Line />
+            <Location />
           </Content>
           <Footer
             id={id}

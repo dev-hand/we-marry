@@ -58,7 +58,7 @@ export const Contact: React.FC<{
 )
 
 const Section = styled(Column)`
-  gap: 20px;
+  gap: 15px;
   align-items: center;
 `
 
