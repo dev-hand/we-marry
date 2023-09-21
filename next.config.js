@@ -13,7 +13,7 @@ const nextConfig = {
   },
   images: {
     loader: 'imgix',
-    path: ['https://dev-hand.github.io/we-marry'],
+    path: ['https://made-by-sean.github.io/we-marry'],
   },
 }
 
