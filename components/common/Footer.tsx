@@ -3,10 +3,10 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import moment from 'moment'
 import { Column, Row } from 'components/common/Layout'
-import { BackgroundImage } from './Image'
-import { BaseText, SmallText } from './Text'
+import { BackgroundImage } from 'components/common/Image'
+import { BaseText, SmallText } from 'components/common/Text'
 import { PREFIX } from 'global/constant'
-import { Card } from './Card'
+import { Card } from 'components/common/Card'
 
 declare global {
   interface Window {

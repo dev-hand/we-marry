@@ -6,6 +6,7 @@ import { Button } from 'components/common/Button'
 import { BackgroundImage } from 'components/common/Image'
 import { theme } from 'styles/theme'
 import { PhoneNumber } from 'global/type'
+import { Chip } from 'components/common/Chip'
 
 export const Contact: React.FC<{
   groomPhoneNumber: PhoneNumber[]
@@ -17,7 +18,7 @@ export const Contact: React.FC<{
       <H1Text>연락처</H1Text>
     </Column>
     <Section>
-      <SectionTitleText>신랑측</SectionTitleText>
+      <Chip>신랑측</Chip>
       {groomPhoneNumber.map((item) => (
         <Row key={item.name} gap={20} style={{ alignItems: 'center' }}>
           <Row gap={10}>
@@ -36,7 +37,7 @@ export const Contact: React.FC<{
       ))}
     </Section>
     <Section>
-      <SectionTitleText>신부측</SectionTitleText>
+      <Chip>신부측</Chip>
       {gridePhoneNumber.map((item) => (
         <Row key={item.name} gap={20} style={{ alignItems: 'center' }}>
           <Row gap={10}>
@@ -73,12 +74,4 @@ const CopyButton = styled(Button)`
   background-color: ${(p) => p.theme.color.lightGray};
   font-size: 13px;
   color: ${(p) => p.theme.color.darkGray};
-`
-
-const SectionTitleText = styled(BaseText)`
-  width: fit-content;
-  padding: 4px 16px;
-  border-radius: 50px;
-  color: ${(p) => p.theme.color.white};
-  background-color: ${(p) => p.theme.color.primary};
 `

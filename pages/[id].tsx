@@ -1,6 +1,5 @@
 import React from 'react'
 import styled from 'styled-components'
-import moment from 'moment'
 import { GetStaticPaths, GetStaticProps, NextPage } from 'next'
 import { Column, Media } from 'components/common/Layout'
 import { Invitation } from 'components/Invitation'
@@ -17,7 +16,7 @@ import { postIds } from 'public/data'
 import { Seo } from 'components/common/Seo'
 import { Footer } from 'components/common/Footer'
 import { Location } from 'components/Location'
-import { getFullWeddingDate, getWeekDay } from 'global/format'
+import { getFullWeddingDate } from 'global/format'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
