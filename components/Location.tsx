@@ -1,9 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Column } from 'components/common/Layout'
+import { Column, Row } from 'components/common/Layout'
 import { BaseText, H1Text, H3Text, SectionText } from 'components/common/Text'
 import { TrafficInfo } from 'global/type'
 import { Map } from 'components/Map'
+import { CopyBtn } from 'components/CopyBtn'
 
 export const Location: React.FC<{
   location: string
@@ -18,12 +19,20 @@ export const Location: React.FC<{
             <SectionText>Location</SectionText>
             <H1Text>오시는 길</H1Text>
           </Column>
-          <Column gap={10}>
+          <Column gap={15}>
             <DescText>{location}</DescText>
-            <DescText>{address}</DescText>
+            <Row
+              gap={10}
+              style={{ justifyContent: 'center', alignItems: 'center' }}
+            >
+              <DescText>{address}</DescText>
+              <CopyBtn text={address} />
+            </Row>
           </Column>
         </Column>
-        <Map address={address} />
+        <Column>
+          <Map address={address} />
+        </Column>
         {trafficInfo.car && (
           <RightSection>
             <H3Text>자가용</H3Text>

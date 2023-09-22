@@ -10,9 +10,9 @@ export const Spacing = styled.div<{
   ${(p) =>
     p.horizontal &&
     `padding-right: ${p.horizontal}px; padding-left: ${p.horizontal}px;`}
-  ${(p) =>
+    ${(p) =>
     p.vertical &&
-    `padding-top: ${p.vertical}px; padding-bottom: ${p.vertical}px;`}
+    `padding-top: ${p.vertical}px; padding-bottom: ${p.vertical}px;`};
 `
 
 export const Column = styled(Spacing)`

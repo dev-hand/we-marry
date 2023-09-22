@@ -7,7 +7,6 @@ import {
   H2Text,
   H3Text,
   SectionText,
-  SmallText,
 } from 'components/common/Text'
 import { Column, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
@@ -73,16 +72,14 @@ export const Invitation: React.FC<{
                 <H3Text>
                   {groomParentsName.father} ‧ {groomParentsName.mother}
                 </H3Text>
-                <SmallDarkGrayText>의</SmallDarkGrayText>
+                <DarkGrayText>의</DarkGrayText>
               </RowCenter>
               <Row>
-                <SmallDarkGrayText style={{ width: 50 }}>
-                  아들
-                </SmallDarkGrayText>
+                <DarkGrayText style={{ width: 50 }}>아들</DarkGrayText>
               </Row>
               <RowCenter gap={4}>
                 <H3Text>{groomName}</H3Text>
-                <SmallDarkGrayText>입니다</SmallDarkGrayText>
+                <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
             <RowCenter>
@@ -90,14 +87,14 @@ export const Invitation: React.FC<{
                 <H3Text>
                   {grideParentsName.father} ‧ {grideParentsName.mother}
                 </H3Text>
-                <SmallDarkGrayText>의</SmallDarkGrayText>
+                <DarkGrayText>의</DarkGrayText>
               </RowCenter>
               <Row>
-                <SmallDarkGrayText style={{ width: 50 }}>딸</SmallDarkGrayText>
+                <DarkGrayText style={{ width: 50 }}>딸</DarkGrayText>
               </Row>
               <RowCenter gap={4}>
                 <H3Text>{grideName}</H3Text>
-                <SmallDarkGrayText>입니다</SmallDarkGrayText>
+                <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
           </Column>
@@ -118,6 +115,6 @@ const RowCenter = styled(Row)`
   align-items: center;
 `
 
-const SmallDarkGrayText = styled(SmallText)`
+const DarkGrayText = styled(BaseText)`
   color: ${(p) => p.theme.color.darkGray};
 `

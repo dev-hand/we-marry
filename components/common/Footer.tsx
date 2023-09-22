@@ -6,7 +6,7 @@ import { Column, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
 import { BaseText, SmallText } from 'components/common/Text'
 import { PREFIX } from 'global/constant'
-import { Card } from 'components/common/Card'
+import { handleCopy } from 'global/handler'
 
 export const Footer: React.FC<{
   id: string
@@ -61,7 +61,7 @@ export const Footer: React.FC<{
           />
           <BaseText>카카오톡 공유하기</BaseText>
         </BtnWrapper>
-        <BtnWrapper>
+        <BtnWrapper onClick={() => handleCopy(window.location.href)}>
           <BackgroundImage
             src='/icon/link.svg'
             style={{ width: 24, height: 24 }}
@@ -69,15 +69,15 @@ export const Footer: React.FC<{
           <BaseText>링크주소 복사하기</BaseText>
         </BtnWrapper>
       </Column>
-      <Card vertical={20} horizontal={20}>
-        <DescText>재능 기부 목적으로 만든 무료 청첩장입니다</DescText>
+      <Column>
+        <DescText>재능 기부 목적으로 만든 무료 청첩장입니다.</DescText>
         <DescText>
           서비스 문의는{' '}
           <Link href=''>
-            <a>여기를 눌러주세요</a>
+            <a>여기를 눌러주세요.</a>
           </Link>
         </DescText>
-      </Card>
+      </Column>
     </MainContainer>
   )
 }

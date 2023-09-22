@@ -17,6 +17,7 @@ import { Seo } from 'components/common/Seo'
 import { Footer } from 'components/common/Footer'
 import { Location } from 'components/Location'
 import { getFullWeddingDate } from 'global/format'
+import { Account } from 'components/Account'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -46,8 +47,8 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
   const index = postIds.indexOf(id)
   const {
     trafficInfo,
-    // grideAccount,
-    // groomAccount,
+    grideAccount,
+    groomAccount,
     address,
     location,
     thumbnail,
@@ -99,6 +100,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
               trafficInfo={trafficInfo}
             />
             <Line />
+            <Account grideAccount={grideAccount} groomAccount={groomAccount} />
           </Content>
           <Footer
             id={id}
@@ -121,7 +123,7 @@ const BoxShadow = styled.div`
 `
 
 const Content = styled(Column)`
-  padding: 20px;
+  padding: 20px 20px 80px;
   align-items: center;
   text-align: center;
 `
