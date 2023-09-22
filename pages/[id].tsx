@@ -42,15 +42,10 @@ export const getStaticProps: GetStaticProps = async (context) => {
   }
 }
 
-interface Props {
-  id: string
-  post: string[]
-}
-
-const Post: NextPage<Props> = ({ id, post }) => {
+const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
   const index = postIds.indexOf(id)
   const {
-    // trafficInfo,
+    trafficInfo,
     // grideAccount,
     // groomAccount,
     address,
@@ -98,7 +93,12 @@ const Post: NextPage<Props> = ({ id, post }) => {
             <Line />
             <Gallery images={images} />
             <Line />
-            <Location />
+            <Location
+              location={location}
+              address={address}
+              trafficInfo={trafficInfo}
+            />
+            <Line />
           </Content>
           <Footer
             id={id}

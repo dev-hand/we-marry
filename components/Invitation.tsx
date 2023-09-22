@@ -65,6 +65,7 @@ export const Invitation: React.FC<{
             height={441}
             objectFit='cover'
             layout='responsive'
+            priority
           />
           <Column gap={10} style={{ alignItems: 'center' }}>
             <RowCenter>

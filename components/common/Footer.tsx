@@ -8,14 +8,7 @@ import { BaseText, SmallText } from 'components/common/Text'
 import { PREFIX } from 'global/constant'
 import { Card } from 'components/common/Card'
 
-declare global {
-  interface Window {
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    Kakao: any
-  }
-}
-
-interface Props {
+export const Footer: React.FC<{
   id: string
   groomName: string
   grideName: string
@@ -23,9 +16,7 @@ interface Props {
   address: string
   location: string
   weddingDate: string
-}
-
-export const Footer: React.FC<Props> = ({
+}> = ({
   id,
   groomName,
   grideName,
@@ -38,8 +29,7 @@ export const Footer: React.FC<Props> = ({
     <MainContainer>
       <Column gap={20}>
         <BtnWrapper
-          onClick={() => {
-            window.Kakao.init('7f507b714b35d40245268ee3378570c7')
+          onClick={() =>
             window.Kakao.Share.sendDefault({
               objectType: 'feed',
               content: {
@@ -63,7 +53,7 @@ export const Footer: React.FC<Props> = ({
                 },
               ],
             })
-          }}
+          }
         >
           <BackgroundImage
             src='/icon/kakao.svg'

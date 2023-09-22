@@ -9,10 +9,10 @@ const IMAGE_SIZE = 120
 const ARROW_SIZE = 24
 export const ImageSlider: React.FC<{
   isOpen: boolean
-  onClose: () => void
   images: string[]
   index: number
-}> = ({ isOpen, onClose, images, index }) => {
+  onClose: () => void
+}> = ({ isOpen, images, index, onClose }) => {
   if (!isOpen) return null
   return (
     <Background>

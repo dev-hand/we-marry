@@ -7,11 +7,7 @@ export interface PostProps {
   grideParentsName: ParentsName
   address: string
   location: string
-  trafficInfo: {
-    car: string
-    metro: string
-    bus: string
-  }
+  trafficInfo: TrafficInfo
   groomAccount: Account[]
   grideAccount: Account[]
   weddingDate: string
@@ -35,4 +31,10 @@ export interface Account {
 export interface PhoneNumber {
   phoneNumber: string
   name: string
+}
+
+export interface TrafficInfo {
+  car: string
+  metro: string
+  bus: string
 }

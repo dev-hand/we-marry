@@ -1,4 +1,3 @@
-import { PREFIX } from 'global/constant'
 import Document, {
   Html,
   Head,
@@ -6,6 +5,7 @@ import Document, {
   NextScript,
   DocumentContext,
 } from 'next/document'
+import { PREFIX } from 'global/constant'
 import { ServerStyleSheet } from 'styled-components'
 
 class MyDocument extends Document {
