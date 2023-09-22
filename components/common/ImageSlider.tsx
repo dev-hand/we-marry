@@ -4,7 +4,6 @@ import Image from 'next/image'
 import { Column, Media, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
 import { H3Text } from 'components/common/Text'
-import { FadeIn } from './Animation'
 
 const IMAGE_SIZE = 120
 const ARROW_SIZE = 24
