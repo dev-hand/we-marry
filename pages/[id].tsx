@@ -72,7 +72,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
         image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
-      <Media>
+      <Frame>
         <BoxShadow>
           <MainCover thumbnail={thumbnail} />
           <Content>
@@ -112,10 +112,25 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
             weddingDate={weddingDate}
           />
         </BoxShadow>
-      </Media>
+      </Frame>
     </>
   )
 }
+
+const Frame = styled(Media)`
+  animation: frameFadeIn 2s 1 ease;
+  @keyframes frameFadeIn {
+    0% {
+      opacity: 0;
+    }
+    20% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+`
 
 const BoxShadow = styled.div`
   overflow: hidden;

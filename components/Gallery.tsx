@@ -11,21 +11,20 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
   const [isOpen, setIsOpen] = useState(false)
   const [selectedIndex, setSelectedIndex] = useState(0)
 
-  const component = (src: string, index: number) => {
-    return (
-      <GalleryImage
-        key={index}
-        src={src}
-        alt={src}
-        width={IMAGE_SIZE}
-        height={IMAGE_SIZE}
-        onClick={() => {
-          setSelectedIndex(index)
-          setIsOpen(true)
-        }}
-      />
-    )
-  }
+  const galleryImage = (src: string, index: number) => (
+    <GalleryImage
+      key={index}
+      src={src}
+      alt={src}
+      width={IMAGE_SIZE}
+      height={IMAGE_SIZE}
+      onClick={() => {
+        setSelectedIndex(index)
+        setIsOpen(true)
+      }}
+    />
+  )
+
   return (
     <Column gap={30} style={{ width: '100%' }}>
       <Column gap={10}>
@@ -36,27 +35,31 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
         <GalleryGrid3Columns>
           {images.map((item, index) => {
             if (index > 2) return
-            return component(item, index)
+            return galleryImage(item, index)
           })}
         </GalleryGrid3Columns>
         <GalleryGrid2Columns>
           <GalleryImage
-            src={images[4]}
-            alt={images[4]}
+            src={images[3]}
+            alt={images[3]}
             width={IMAGE_SIZE * 2}
             height={IMAGE_SIZE * 2}
+            onClick={() => {
+              setSelectedIndex(3)
+              setIsOpen(true)
+            }}
           />
           <Column gap={10}>
             {images.map((item, index) => {
               if (index < 4 || index > 5) return
-              return component(item, index)
+              return galleryImage(item, index)
             })}
           </Column>
         </GalleryGrid2Columns>
         <GalleryGrid3Columns>
           {images.map((item, index) => {
             if (index < 6) return
-            return component(item, index)
+            return galleryImage(item, index)
           })}
         </GalleryGrid3Columns>
       </Column>

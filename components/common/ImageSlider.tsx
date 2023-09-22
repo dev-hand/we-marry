@@ -1,32 +1,54 @@
-import React from 'react'
+import React, { useLayoutEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import { Column, Media, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
-import { BaseText } from 'components/common/Text'
+import { H3Text } from 'components/common/Text'
+import { FadeIn } from './Animation'
 
 const IMAGE_SIZE = 120
 const ARROW_SIZE = 24
+
 export const ImageSlider: React.FC<{
   isOpen: boolean
   images: string[]
   index: number
   onClose: () => void
 }> = ({ isOpen, images, index, onClose }) => {
+  const [selectedIndex, setSelectedIndex] = useState(index)
+
+  useLayoutEffect(() => {
+    setSelectedIndex(index)
+  }, [index])
+
   if (!isOpen) return null
+
+  const handlePrev = () => {
+    if (selectedIndex === 0) return
+    setSelectedIndex((prev) => prev - 1)
+  }
+
+  const handleNext = () => {
+    if (images.length === selectedIndex + 1) return
+    setSelectedIndex((prev) => prev + 1)
+  }
+
   return (
-    <Background>
-      <Media>
+    <Background onClick={onClose}>
+      <CloseBtn src='/icon/x-white.svg' />
+      <Media onClick={(e) => e.stopPropagation()}>
         <GalleryImage
-          src={images[index]}
-          alt={images[index]}
+          src={images[selectedIndex]}
+          alt={images[selectedIndex]}
           width={IMAGE_SIZE}
           height={IMAGE_SIZE}
         />
         <BottomContainer>
-          <ArrowBtn src='/icon/chevron-up-left.svg' />
-          <CloseButton onClick={onClose}>닫기</CloseButton>
-          <ArrowBtn src='/icon/chevron-up-right.svg' />
+          <ArrowBtn src='/icon/chevron-up-left.svg' onClick={handlePrev} />
+          <PageText>
+            {selectedIndex + 1} / {images.length}
+          </PageText>
+          <ArrowBtn src='/icon/chevron-up-right.svg' onClick={handleNext} />
         </BottomContainer>
       </Media>
     </Background>
@@ -46,8 +68,8 @@ const Background = styled(Column)`
   width: 100%;
   height: 100%;
   justify-content: center;
-  background-color: #000000ee;
-  z-index: 1;
+  background-color: #000000;
+  z-index: 100;
 `
 
 const GalleryImage = styled(Image).attrs({
@@ -62,11 +84,18 @@ const BottomContainer = styled(Row)`
   bottom: 40px;
   justify-content: center;
   align-items: center;
-  gap: 40px;
+  gap: 20px;
 `
 
-const CloseButton = styled(BaseText)`
-  color: ${(p) => p.theme.color.white};
-  text-decoration: underline;
+const CloseBtn = styled(BackgroundImage)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
   cursor: pointer;
+`
+
+const PageText = styled(H3Text)`
+  color: ${(p) => p.theme.color.white};
 `

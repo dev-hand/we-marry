@@ -9,13 +9,14 @@ export const Select: React.FC<{
   title: string
 }> = ({ children, title }) => {
   const [isOpen, setIsOpen] = useState(false)
+  const optionHeight = 88 * children.length
   return (
     <Column>
       <Dropdown isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
         <ContainerTitleText>{title}</ContainerTitleText>
         <DropdownIcon src='/icon/chevron-down-white.svg' />
       </Dropdown>
-      {isOpen && <Option>{children}</Option>}
+      {isOpen && <Option height={optionHeight}>{children}</Option>}
     </Column>
   )
 }
@@ -30,13 +31,24 @@ const Dropdown = styled(Row)<{ isOpen: boolean }>`
   cursor: pointer;
 `
 
-const Option = styled(Column)`
+const Option = styled(Column)<{ height: number }>`
+  height: ${(p) => p.height}px;
   padding: 0 20px;
   border: 1px solid ${(p) => p.theme.color.lightGray};
   border-top: 0;
   border-radius: 0 0 4px 4px;
   .selectItem:not(:last-child) {
     border-bottom: 1px solid ${(p) => p.theme.color.lightGray};
+  }
+  animation: optionDropdown 0.5s 1 ease;
+  overflow: hidden;
+  @keyframes optionDropdown {
+    0% {
+      height: 0px;
+    }
+    100% {
+      height: ${(p) => p.height};
+    }
   }
 `
 

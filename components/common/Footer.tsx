@@ -78,6 +78,7 @@ export const Footer: React.FC<{
           </Link>
         </DescText>
       </Column>
+      <Signature>Made By Sean</Signature>
     </MainContainer>
   )
 }
@@ -104,4 +105,11 @@ const DescText = styled(SmallText)`
     color: ${(p) => p.theme.color.black};
     text-decoration: underline;
   }
+`
+
+const Signature = styled(Row)`
+  padding: 5px 15px;
+  color: ${(p) => p.theme.color.white};
+  background-color: ${(p) => p.theme.color.primary};
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.05);
 `
