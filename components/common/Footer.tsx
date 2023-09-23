@@ -28,7 +28,8 @@ export const Footer: React.FC<{
   <MainContainer>
     <Column gap={20}>
       <BtnWrapper
-        onClick={() =>
+        onClick={() => {
+          console.log(`${PREFIX}/${thumbnail}`)
           window.Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
@@ -52,7 +53,7 @@ export const Footer: React.FC<{
               },
             ],
           })
-        }
+        }}
       >
         <BackgroundImage
           src='/icon/kakao.svg'
