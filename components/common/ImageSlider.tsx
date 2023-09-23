@@ -17,6 +17,24 @@ export const ImageSlider: React.FC<{
   const [selectedIndex, setSelectedIndex] = useState(index)
 
   useEffect(() => {
+    if (!isOpen) return
+    document
+      .querySelector('meta[name="viewport"]')
+      ?.setAttribute(
+        'content',
+        'width=device-width, initial-scale=1, maximum-scale=10.0, minimum-scale=1, user-scalable=10, viewport-fit=cover',
+      )
+    return () => {
+      document
+        .querySelector('meta[name="viewport"]')
+        ?.setAttribute(
+          'content',
+          'width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=0, viewport-fit=cover',
+        )
+    }
+  }, [isOpen])
+
+  useEffect(() => {
     setSelectedIndex(index)
   }, [index])
 

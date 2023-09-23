@@ -77,7 +77,7 @@ export const Footer: React.FC<{
         </Link>
       </DescText>
     </Column>
-    <SignText>@MadeBySean</SignText>
+    {/* <SignText>@MadeBySean</SignText> */}
   </MainContainer>
 )
 

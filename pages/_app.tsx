@@ -17,9 +17,11 @@ declare global {
 }
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  useEffect(() => {
-    window.addEventListener('load', () => window.Kakao.init(KAKAO_JS_KEY))
-  }, [])
+  useEffect(
+    () =>
+      window.addEventListener('load', () => window.Kakao.init(KAKAO_JS_KEY)),
+    [],
+  )
   return (
     <>
       <Script
