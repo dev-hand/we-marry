@@ -10,7 +10,7 @@ export const Location: React.FC<{
   address: string
 }> = ({ location, address }) => (
   <Column style={{ width: '100%' }}>
-    <Column gap={30}>
+    <Column gap={40}>
       <Column gap={20}>
         <Column gap={10}>
           <SectionText>Location</SectionText>

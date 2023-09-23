@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
 import { Column, Media, Row } from 'components/common/Layout'
@@ -16,7 +16,7 @@ export const ImageSlider: React.FC<{
 }> = ({ isOpen, images, index, onClose }) => {
   const [selectedIndex, setSelectedIndex] = useState(index)
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setSelectedIndex(index)
   }, [index])
 
@@ -72,7 +72,7 @@ const Background = styled(Column)`
 `
 
 const GalleryImage = styled(Image).attrs({
-  objectFit: 'cover',
+  objectFit: 'contain',
   layout: 'responsive',
 })``
 

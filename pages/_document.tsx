@@ -33,13 +33,13 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <link rel='icon' href={`${PREFIX}/icon/leaf.svg`} />
+        </Head>
+        <body>
           <meta
             name='viewport'
             content='width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1, user-scalable=0, viewport-fit=cover'
           />
-          <link rel='icon' href={`${PREFIX}/icon/leaf.svg`} />
-        </Head>
-        <body>
           <Main />
           <NextScript />
         </body>

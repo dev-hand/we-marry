@@ -28,14 +28,17 @@ export const WeddingDay: React.FC<{
         <Row style={{ justifyContent: 'center' }}>
           <Chip>{moment(new Date(weddingDate)).format('YYYY년 M월')}</Chip>
         </Row>
-        <Image
-          src={calendarImage}
-          alt='calendar'
-          width={353}
-          height={220}
-          objectFit='cover'
-          layout='responsive'
-        />
+        <div>
+          <Image
+            src={calendarImage}
+            alt='calendar'
+            width={353}
+            height={220}
+            objectFit='cover'
+            layout='responsive'
+            priority
+          />
+        </div>
       </Column>
     </Column>
   )

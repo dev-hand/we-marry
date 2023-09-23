@@ -8,7 +8,7 @@ import {
   H3Text,
   SectionText,
 } from 'components/common/Text'
-import { Column, Row } from 'components/common/Layout'
+import { Column, ColumnCenter, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
 import { Modal } from 'components/common/Modal'
 import { Contact } from 'components/Contact'
@@ -37,7 +37,7 @@ export const Invitation: React.FC<{
   const [isOpen, setIsOpen] = useState(false)
   return (
     <Column style={{ width: '100%' }}>
-      <Column gap={60}>
+      <Column gap={40}>
         <Column gap={10}>
           <SectionText>Invitation</SectionText>
           <Row gap={10} style={{ justifyContent: 'center' }}>
@@ -47,23 +47,25 @@ export const Invitation: React.FC<{
           </Row>
         </Column>
         <Column gap={40}>
-          <Column style={{ alignItems: 'center' }}>
+          <ColumnCenter>
             <BackgroundImage
               src='/icon/leaf.svg'
               style={{ width: 24, height: 35 }}
             />
-          </Column>
+          </ColumnCenter>
           <MsgText>{message}</MsgText>
-          <Image
-            src={image}
-            alt='invitation-image'
-            width={353}
-            height={441}
-            objectFit='cover'
-            layout='responsive'
-            priority
-          />
-          <Column gap={10} style={{ alignItems: 'center' }}>
+          <div>
+            <Image
+              src={image}
+              alt={image}
+              width={353}
+              height={441}
+              objectFit='cover'
+              layout='responsive'
+              priority
+            />
+          </div>
+          <ColumnCenter gap={10}>
             <RowCenter>
               <RowCenter gap={4}>
                 <RowCenter>
@@ -96,7 +98,7 @@ export const Invitation: React.FC<{
                 <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
-          </Column>
+          </ColumnCenter>
           <Button onClick={() => setIsOpen(true)}>연락하기</Button>
         </Column>
       </Column>

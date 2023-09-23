@@ -18,7 +18,9 @@ export const Modal: React.FC<{
           onClick={(e) => e.stopPropagation()}
         >
           {children}
-          <CloseText onClick={onClose}>닫기</CloseText>
+          <CloseText>
+            <span onClick={onClose}>닫기</span>
+          </CloseText>
         </ModalCard>
       </Container>
     </Background>
@@ -48,21 +50,23 @@ const ModalCard = styled(Card)<{ screenWidth: number }>`
   }
   width: ${(p) => p.screenWidth - 40}px;
   position: absolute;
-  top: -200px;
-  gap: 40px;
+  top: -250px;
+  gap: 60px;
   padding: 60px 0;
   @keyframes modalFadeUp {
     0% {
-      top: -180px;
+      top: -220px;
     }
     100% {
-      top: -200px;
+      top: -250px;
     }
   }
-  animation: modalFadeUp 0.5s ease;
+  animation: modalFadeUp 0.8s ease;
 `
 
 const CloseText = styled(BaseText)`
   text-decoration: underline;
-  cursor: pointer;
+  span {
+    cursor: pointer;
+  }
 `

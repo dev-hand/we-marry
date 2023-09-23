@@ -4,8 +4,8 @@ import { Column, Row } from 'components/common/Layout'
 import { BaseText, H1Text, SectionText } from 'components/common/Text'
 import { theme } from 'styles/theme'
 import { PhoneNumber } from 'global/type'
-import { Chip } from 'components/common/Chip'
 import { CopyBtn } from 'components/CopyBtn'
+import { Chip } from './common/Chip'
 
 export const Contact: React.FC<{
   groomPhoneNumber: PhoneNumber[]
@@ -39,13 +39,13 @@ const Item: React.FC<{ name: string; phoneNumber: string }> = ({
     <Row gap={10}>
       <BaseText>{phoneNumber}</BaseText>
       <BaseText style={{ color: theme.color.gray }}>|</BaseText>
-      <BaseText>{name}</BaseText>
+      <BaseText style={{ width: 60 }}>{name}</BaseText>
     </Row>
     <CopyBtn text={phoneNumber} />
   </Row>
 )
 
 const Section = styled(Column)`
-  gap: 15px;
+  gap: 20px;
   align-items: center;
 `

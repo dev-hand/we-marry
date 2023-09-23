@@ -1,10 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
-import { BackgroundImage } from 'components/common/Image'
+import Image from 'next/image'
 
 export const MainCover: React.FC<{ thumbnail: string }> = ({ thumbnail }) => (
   <>
-    <BackgroundImage src={thumbnail} style={{ width: '100%', height: 634 }} />
+    <Image
+      src={thumbnail}
+      alt={thumbnail}
+      width={300}
+      height={400}
+      layout='responsive'
+      objectFit='cover'
+      priority
+    />
     <div style={{ position: 'relative', height: 30 }}>
       <Gradation />
     </div>

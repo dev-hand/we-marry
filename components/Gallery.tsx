@@ -12,21 +12,23 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
   const [selectedIndex, setSelectedIndex] = useState(0)
 
   const galleryImage = (src: string, index: number) => (
-    <GalleryImage
-      key={index}
-      src={src}
-      alt={src}
-      width={IMAGE_SIZE}
-      height={IMAGE_SIZE}
-      onClick={() => {
-        setSelectedIndex(index)
-        setIsOpen(true)
-      }}
-    />
+    <div key={index}>
+      <GalleryImage
+        src={src}
+        alt={src}
+        width={IMAGE_SIZE}
+        height={IMAGE_SIZE}
+        priority
+        onClick={() => {
+          setSelectedIndex(index)
+          setIsOpen(true)
+        }}
+      />
+    </div>
   )
 
   return (
-    <Column gap={30} style={{ width: '100%' }}>
+    <Column gap={40} style={{ width: '100%' }}>
       <Column gap={10}>
         <SectionText>Gallery</SectionText>
         <H1Text>갤러리</H1Text>
@@ -39,16 +41,19 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
           })}
         </GalleryGrid3Columns>
         <GalleryGrid2Columns>
-          <GalleryImage
-            src={images[3]}
-            alt={images[3]}
-            width={IMAGE_SIZE * 2}
-            height={IMAGE_SIZE * 2}
-            onClick={() => {
-              setSelectedIndex(3)
-              setIsOpen(true)
-            }}
-          />
+          <div>
+            <GalleryImage
+              src={images[3]}
+              alt={images[3]}
+              width={IMAGE_SIZE * 2}
+              height={IMAGE_SIZE * 2}
+              priority
+              onClick={() => {
+                setSelectedIndex(3)
+                setIsOpen(true)
+              }}
+            />
+          </div>
           <Column gap={10}>
             {images.map((item, index) => {
               if (index < 4 || index > 5) return

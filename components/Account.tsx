@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Column } from 'components/common/Layout'
+import { Column, ColumnCenter } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
 import { BaseText, H1Text } from 'components/common/Text'
 import { Select, SelectItem } from 'components/common/Select'
@@ -31,14 +31,14 @@ export const Account: React.FC<{
 }> = ({ groomAccount, grideAccount }) => {
   return (
     <Column style={{ width: '100%' }}>
-      <Column gap={30}>
-        <Column gap={20} style={{ alignItems: 'center' }}>
+      <Column gap={40}>
+        <ColumnCenter gap={20}>
           <BackgroundImage
             src='/icon/leaf.svg'
             style={{ width: 24, height: 35 }}
           />
           <H1Text>마음 전하실 곳</H1Text>
-        </Column>
+        </ColumnCenter>
         <Column gap={10}>
           {groomAccount.length > 0 && (
             <Select title='신랑측 계좌번호'>
