@@ -29,7 +29,6 @@ export const Footer: React.FC<{
     <Column gap={20}>
       <BtnWrapper
         onClick={() => {
-          console.log(`${PREFIX}/${thumbnail}`)
           window.Kakao.Share.sendDefault({
             objectType: 'feed',
             content: {
