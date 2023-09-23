@@ -36,3 +36,11 @@ export const Media = styled.div`
     width: 100%;
   }
 `
+
+export const RowCenter = styled(Row)`
+  align-items: center;
+`
+
+export const ColumnCenter = styled(Column)`
+  align-items: center;
+`

@@ -10,7 +10,6 @@ import {
 } from 'components/common/Text'
 import { Column, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
-import { theme } from 'styles/theme'
 import { Modal } from 'components/common/Modal'
 import { Contact } from 'components/Contact'
 import { Button } from 'components/common/Button'
@@ -54,9 +53,7 @@ export const Invitation: React.FC<{
               style={{ width: 24, height: 35 }}
             />
           </Column>
-          <BaseText style={{ lineHeight: '32px', color: theme.color.darkGray }}>
-            {message}
-          </BaseText>
+          <MsgText>{message}</MsgText>
           <Image
             src={image}
             alt='invitation-image'
@@ -127,4 +124,8 @@ const MaleText = styled(DarkGrayText)`
 
 const NameText = styled(H3Text)`
   min-width: 70px;
+`
+
+const MsgText = styled(DarkGrayText)`
+  line-height: 32px;
 `
