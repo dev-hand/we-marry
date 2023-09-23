@@ -104,7 +104,3 @@ const DescText = styled(SmallText)`
     text-decoration: underline;
   }
 `
-
-const SignText = styled(BaseText)`
-  color: ${(p) => p.theme.color.primary};
-`
