@@ -12,7 +12,11 @@ export const WeddingDay: React.FC<{
 }> = ({ weddingDate, calendarImage }) => {
   const diffDate = getDiffDate(new Date().toString(), weddingDate)
   const dDay =
-    diffDate === 0 ? '오늘 결혼합니다.' : `결혼식까지 ${diffDate}일 남았습니다`
+    diffDate === 0
+      ? '오늘 결혼합니다.'
+      : diffDate < 0
+      ? '결혼식이 지났습니다.'
+      : `결혼식까지 ${diffDate}일 남았습니다.`
 
   return (
     <Column gap={40} style={{ width: '100%' }}>

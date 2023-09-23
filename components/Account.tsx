@@ -54,7 +54,7 @@ export const Account: React.FC<{
           )}
           {grideAccount.length > 0 && (
             <Select title='신부측 계좌번호'>
-              {groomAccount.map((item, index) => (
+              {grideAccount.map((item, index) => (
                 <Item
                   key={index}
                   bankName={item.bankName}

@@ -51,17 +51,15 @@ const ModalCard = styled(Card)<{ screenWidth: number }>`
   top: -200px;
   gap: 40px;
   padding: 60px 0;
-  @keyframes FadeUpContactModal {
+  @keyframes modalFadeUp {
     0% {
-      opacity: 0;
       top: -180px;
     }
     100% {
-      opacity: 1;
       top: -200px;
     }
   }
-  animation: FadeUpContactModal 300ms ease-out;
+  animation: modalFadeUp 0.5s ease;
 `
 
 const CloseText = styled(BaseText)`

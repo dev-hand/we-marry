@@ -46,7 +46,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
 const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
   const index = postIds.indexOf(id)
   const {
-    trafficInfo,
     grideAccount,
     groomAccount,
     address,
@@ -68,7 +67,9 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
     <>
       <Seo
         title={`${groomName} ♥︎ ${grideName} 결혼합니다`}
-        description={getFullWeddingDate(weddingDate)}
+        description={`${getFullWeddingDate(
+          weddingDate,
+        )} ${address} ${location}`}
         image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
@@ -94,11 +95,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
             <Line />
             <Gallery images={images} />
             <Line />
-            <Location
-              location={location}
-              address={address}
-              trafficInfo={trafficInfo}
-            />
+            <Location location={location} address={address} />
             <Line />
             <Account grideAccount={grideAccount} groomAccount={groomAccount} />
           </Content>

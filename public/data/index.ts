@@ -1,1 +1,1 @@
-export const postIds = ['cyc-syj']
+export const postIds = ['cyc-syj', 'ssh-pyh']

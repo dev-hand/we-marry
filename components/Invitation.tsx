@@ -69,31 +69,33 @@ export const Invitation: React.FC<{
           <Column gap={10} style={{ alignItems: 'center' }}>
             <RowCenter>
               <RowCenter gap={4}>
-                <H3Text>
-                  {groomParentsName.father} ‧ {groomParentsName.mother}
-                </H3Text>
+                <RowCenter>
+                  <NameText>{groomParentsName.father}</NameText> {' ‧ '}
+                  <NameText>{groomParentsName.mother}</NameText>
+                </RowCenter>
                 <DarkGrayText>의</DarkGrayText>
               </RowCenter>
               <Row>
-                <DarkGrayText style={{ width: 50 }}>아들</DarkGrayText>
+                <MaleText>아들</MaleText>
               </Row>
               <RowCenter gap={4}>
-                <H3Text>{groomName}</H3Text>
+                <NameText>{groomName}</NameText>
                 <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
             <RowCenter>
               <RowCenter gap={4}>
-                <H3Text>
-                  {grideParentsName.father} ‧ {grideParentsName.mother}
-                </H3Text>
+                <RowCenter>
+                  <NameText>{grideParentsName.father}</NameText> {' ‧ '}
+                  <NameText>{grideParentsName.mother}</NameText>
+                </RowCenter>
                 <DarkGrayText>의</DarkGrayText>
               </RowCenter>
               <Row>
-                <DarkGrayText style={{ width: 50 }}>딸</DarkGrayText>
+                <MaleText>딸</MaleText>
               </Row>
               <RowCenter gap={4}>
-                <H3Text>{grideName}</H3Text>
+                <NameText>{grideName}</NameText>
                 <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
@@ -117,4 +119,12 @@ const RowCenter = styled(Row)`
 
 const DarkGrayText = styled(BaseText)`
   color: ${(p) => p.theme.color.darkGray};
+`
+
+const MaleText = styled(DarkGrayText)`
+  width: 40px;
+`
+
+const NameText = styled(H3Text)`
+  min-width: 70px;
 `
