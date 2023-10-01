@@ -18,9 +18,7 @@ export const Modal: React.FC<{
           onClick={(e) => e.stopPropagation()}
         >
           {children}
-          <CloseBtnText>
-            <span onClick={onClose}>닫기</span>
-          </CloseBtnText>
+          <CloseBtnText onClick={onClose}>닫기</CloseBtnText>
         </ModalCard>
       </Container>
     </Background>

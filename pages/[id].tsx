@@ -82,10 +82,10 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
               grideName={grideName}
               grideParentsName={grideParentsName}
               gridePhoneNumber={gridePhoneNumber}
+              image={images[0]}
               groomName={groomName}
               groomParentsName={groomParentsName}
               groomPhoneNumber={groomPhoneNumber}
-              image={images[0]}
             />
             <Line />
             <WeddingDay

@@ -40,59 +40,57 @@ export const Invitation: React.FC<{
             <H1Text>{grideName}</H1Text>
           </Row>
         </Column>
-        <Column gap={40}>
-          <ColumnCenter>
-            <BackgroundImage
-              src='/icon/leaf.svg'
-              style={{ width: 24, height: 35 }}
-            />
-          </ColumnCenter>
-          <MsgText>{message}</MsgText>
-          <div>
-            <Image
-              src={image}
-              alt={image}
-              width={353}
-              height={441}
-              objectFit='cover'
-              layout='responsive'
-              priority
-            />
-          </div>
-          <ColumnCenter gap={10}>
-            <RowCenter>
-              <RowCenter gap={4}>
-                <RowCenter>
-                  <NameText>{groomParentsName.father}</NameText> {' ‧ '}
-                  <NameText>{groomParentsName.mother}</NameText>
-                </RowCenter>
-                <DarkGrayText>의</DarkGrayText>
+        <ColumnCenter>
+          <BackgroundImage
+            src='/icon/leaf.svg'
+            style={{ width: 24, height: 35 }}
+          />
+        </ColumnCenter>
+        <MsgText>{message}</MsgText>
+        <div>
+          <Image
+            src={image}
+            alt={image}
+            width={353}
+            height={441}
+            objectFit='cover'
+            layout='responsive'
+            priority
+          />
+        </div>
+        <ColumnCenter gap={10}>
+          <RowCenter>
+            <RowCenter gap={4}>
+              <RowCenter>
+                <NameText>{groomParentsName.father}</NameText> {' ‧ '}
+                <NameText>{groomParentsName.mother}</NameText>
               </RowCenter>
-              <Row>
-                <MaleText>아들</MaleText>
-              </Row>
-              <RowCenter gap={4}>
-                <NameText>{groomName}</NameText>
-              </RowCenter>
+              <DarkGrayText>의</DarkGrayText>
             </RowCenter>
-            <RowCenter>
-              <RowCenter gap={4}>
-                <RowCenter>
-                  <NameText>{grideParentsName.father}</NameText> {' ‧ '}
-                  <NameText>{grideParentsName.mother}</NameText>
-                </RowCenter>
-                <DarkGrayText>의</DarkGrayText>
-              </RowCenter>
-              <Row>
-                <MaleText>딸</MaleText>
-              </Row>
-              <RowCenter gap={4}>
-                <NameText>{grideName}</NameText>
-              </RowCenter>
+            <Row>
+              <MaleText>아들</MaleText>
+            </Row>
+            <RowCenter gap={4}>
+              <NameText>{groomName}</NameText>
             </RowCenter>
-          </ColumnCenter>
-          <Button onClick={() => setIsOpen(true)}>연락하기</Button>
-        </Column>
+          </RowCenter>
+          <RowCenter>
+            <RowCenter gap={4}>
+              <RowCenter>
+                <NameText>{grideParentsName.father}</NameText> {' ‧ '}
+                <NameText>{grideParentsName.mother}</NameText>
+              </RowCenter>
+              <DarkGrayText>의</DarkGrayText>
+            </RowCenter>
+            <Row>
+              <MaleText>딸</MaleText>
+            </Row>
+            <RowCenter gap={4}>
+              <NameText>{grideName}</NameText>
+            </RowCenter>
+          </RowCenter>
+        </ColumnCenter>
+        <Button onClick={() => setIsOpen(true)}>연락하기</Button>
       </Column>
       <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
         <Contact
