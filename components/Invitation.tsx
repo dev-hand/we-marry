@@ -79,7 +79,6 @@ export const Invitation: React.FC<{
               </Row>
               <RowCenter gap={4}>
                 <NameText>{groomName}</NameText>
-                <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
             <RowCenter>
@@ -95,7 +94,6 @@ export const Invitation: React.FC<{
               </Row>
               <RowCenter gap={4}>
                 <NameText>{grideName}</NameText>
-                <DarkGrayText>입니다.</DarkGrayText>
               </RowCenter>
             </RowCenter>
           </ColumnCenter>

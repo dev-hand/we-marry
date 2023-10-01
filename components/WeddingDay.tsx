@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { Column, Row } from 'components/common/Layout'
 import { H1Text, SectionText } from 'components/common/Text'
-import { getDiffDate } from 'global/format'
+import { getDiffDate, getFullWeddingDate } from 'global/format'
 import { Chip } from 'components/common/Chip'
 import moment from 'moment'
 
@@ -13,16 +13,17 @@ export const WeddingDay: React.FC<{
   const diffDate = getDiffDate(new Date().toString(), weddingDate)
   const dDay =
     diffDate === 0
-      ? '오늘 결혼합니다.'
+      ? '오늘 결혼합니다'
       : diffDate < 0
-      ? '결혼식이 지났습니다.'
-      : `결혼식까지 ${diffDate}일 남았습니다.`
+      ? '결혼식이 지났습니다'
+      : `결혼식까지 ${diffDate}일 남았습니다`
 
   return (
     <Column gap={40} style={{ width: '100%' }}>
       <Column gap={10}>
         <SectionText>Wedding day</SectionText>
-        <H1Text>{dDay}</H1Text>
+        {/* <H1Text>{dDay}</H1Text> */}
+        <H1Text>{getFullWeddingDate(weddingDate)}</H1Text>
       </Column>
       <Column gap={20}>
         <Row style={{ justifyContent: 'center' }}>
