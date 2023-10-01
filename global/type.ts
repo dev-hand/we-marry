@@ -14,6 +14,7 @@ export interface PostProps {
   groomPhoneNumber: PhoneNumber[]
   gridePhoneNumber: PhoneNumber[]
   calendarImage: string
+  trafficInfo: TrafficInfo
 }
 
 export interface ParentsName {
@@ -30,4 +31,10 @@ export interface Account {
 export interface PhoneNumber {
   phoneNumber: string
   name: string
+}
+
+export interface TrafficInfo {
+  bus: string
+  metro: string
+  car: string
 }

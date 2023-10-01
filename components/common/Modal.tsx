@@ -18,9 +18,9 @@ export const Modal: React.FC<{
           onClick={(e) => e.stopPropagation()}
         >
           {children}
-          <CloseText>
+          <CloseBtnText>
             <span onClick={onClose}>닫기</span>
-          </CloseText>
+          </CloseBtnText>
         </ModalCard>
       </Container>
     </Background>
@@ -35,7 +35,7 @@ const Background = styled(Column)`
   height: 100%;
   justify-content: center;
   background-color: rgba(72, 72, 72, 0.2);
-  z-index: 1;
+  z-index: 2;
 `
 
 const Container = styled(Media)`
@@ -49,10 +49,9 @@ const ModalCard = styled(Card)<{ screenWidth: number }>`
     width: 440px;
   }
   width: ${(p) => p.screenWidth - 40}px;
+  overflow: hidden;
   position: absolute;
   top: -250px;
-  gap: 60px;
-  padding: 60px 0;
   @keyframes modalFadeUp {
     0% {
       top: -220px;
@@ -64,7 +63,8 @@ const ModalCard = styled(Card)<{ screenWidth: number }>`
   animation: modalFadeUp 0.8s ease;
 `
 
-const CloseText = styled(BaseText)`
+const CloseBtnText = styled(BaseText)`
+  padding: 40px 0;
   text-decoration: underline;
   span {
     cursor: pointer;

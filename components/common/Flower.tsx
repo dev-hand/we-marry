@@ -3,17 +3,6 @@ import styled, { Keyframes, keyframes } from 'styled-components'
 import { random } from 'lodash'
 import { useIsClient } from 'usehooks-ts'
 
-// const color = [
-//   '#90D3D1',
-//   '#EAA586',
-//   '#577BAF',
-//   '#83678E',
-//   '#EEC75D',
-//   '#53B199',
-//   '#BD454F',
-//   '#D1DBAA',
-// ]
-// const color = ['#1F8EF0', '#24D59E', '#24D59E59', '#1F8EF073']
 const color = ['#EAA586', '#D8BEB2', '#F8ECE7']
 
 interface FlowerProps {
@@ -30,14 +19,14 @@ export const Flower: React.FC = () => {
   if (!isClient) return null
   const data = []
   let count = 0
-  for (let i = 0; i < 50; i++) {
+  for (let i = 0; i < 30; i++) {
     if (count === color.length) count = 0
     data.push({
       color: color[count],
       shape: random(1, 5),
       delay: random(0, 3000),
       location: random(0, window.innerWidth),
-      duration: { fly: random(6000, 8000), drop: random(3000, 4000) },
+      duration: { fly: random(2000, 3000), drop: random(3000, 4000) },
       direction: random(0, 1),
     })
     count++
@@ -143,14 +132,14 @@ const Paper = styled.span<{
   animation-name: ${(p) => p.fly}, drop;
   animation-duration: ${(p) => p.duration.fly}ms, ${(p) => p.duration.drop}ms;
   animation-timing-function: ease-in-out, ease-in;
-  animation-iteration-count: 1;
+  animation-iteration-count: infinite;
   animation-delay: 0ms, ${(p) => p.delay}ms;
 `
 
 const Main = styled.div`
   z-index: 2;
   width: 100%;
-  height: 100%;
-  position: fixed;
+  height: 400px;
+  position: absolute;
   pointer-events: none;
 `

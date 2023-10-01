@@ -18,7 +18,6 @@ import { Footer } from 'components/common/Footer'
 import { Location } from 'components/Location'
 import { getFullWeddingDate } from 'global/format'
 import { Account } from 'components/Account'
-import { Flower } from 'components/common/Flower'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -62,6 +61,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
     weddingDate,
     message,
     calendarImage,
+    trafficInfo,
   }: PostProps = JSON.parse(post[index])
   return (
     <>
@@ -73,7 +73,6 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
         image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
-      <Flower />
       <Frame>
         <BoxShadow>
           <MainCover thumbnail={thumbnail} />
@@ -96,7 +95,11 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
             <Line />
             <Gallery images={images} />
             <Line />
-            <Location location={location} address={address} />
+            <Location
+              location={location}
+              address={address}
+              trafficInfo={trafficInfo}
+            />
             <Line />
             <Account grideAccount={grideAccount} groomAccount={groomAccount} />
           </Content>

@@ -14,7 +14,7 @@ export const Select: React.FC<{
     <Column>
       <Dropdown isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>
         <ContainerTitleText>{title}</ContainerTitleText>
-        <DropdownIcon src='/icon/chevron-down-white.svg' />
+        <DropdownIcon src='/icon/chevron-down-primary.svg' />
       </Dropdown>
       {isOpen && <Option height={optionHeight}>{children}</Option>}
     </Column>
@@ -27,7 +27,7 @@ const Dropdown = styled(Row)<{ isOpen: boolean }>`
   border-radius: ${(p) => (p.isOpen ? '4px 4px 0 0;' : '4px;')};
   align-items: center;
   justify-content: center;
-  background-color: ${(p) => p.theme.color.primary};
+  background-color: ${(p) => p.theme.color.secondary};
   cursor: pointer;
 `
 
@@ -57,7 +57,7 @@ export const SelectItem = styled(Row).attrs({ className: 'selectItem' })`
 `
 
 const ContainerTitleText = styled(BaseText)`
-  color: ${(p) => p.theme.color.white};
+  color: ${(p) => p.theme.color.primary};
 `
 
 const DropdownIcon = styled(BackgroundImage)`

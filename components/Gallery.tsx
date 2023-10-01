@@ -29,11 +29,11 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
 
   return (
     <Column gap={40} style={{ width: '100%' }}>
-      <Column gap={10}>
-        <SectionText>Gallery</SectionText>
+      <Column gap={15}>
+        <SectionText>GALLERY</SectionText>
         <H1Text>갤러리</H1Text>
       </Column>
-      <Column gap={10}>
+      <Column gap={2}>
         <GalleryGrid3Columns>
           {images.map((item, index) => {
             if (index > 2) return
@@ -54,7 +54,7 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
               }}
             />
           </div>
-          <Column gap={10}>
+          <Column gap={2}>
             {images.map((item, index) => {
               if (index < 4 || index > 5) return
               return galleryImage(item, index)
@@ -79,12 +79,12 @@ export const Gallery: React.FC<{ images: string[] }> = ({ images }) => {
 }
 
 const GalleryGrid3Columns = styled(Grid)`
-  gap: 10px;
+  gap: 2px;
   grid-template-columns: 1fr 1fr 1fr;
 `
 
 const GalleryGrid2Columns = styled(GalleryGrid3Columns)`
-  grid-template-columns: 2.08fr 1fr;
+  grid-template-columns: 2.02fr 1fr;
 `
 
 const GalleryImage = styled(Image).attrs({

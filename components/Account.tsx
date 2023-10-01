@@ -72,5 +72,4 @@ export const Account: React.FC<{
 
 const AccountSelectItem = styled(SelectItem)`
   justify-content: space-between;
-  align-items: center;
 `

@@ -1,13 +1,7 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import {
-  BaseText,
-  H1Text,
-  H2Text,
-  H3Text,
-  SectionText,
-} from 'components/common/Text'
+import { BaseText, H1Text, H3Text, SectionText } from 'components/common/Text'
 import { Column, ColumnCenter, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
 import { Modal } from 'components/common/Modal'
@@ -38,10 +32,10 @@ export const Invitation: React.FC<{
   return (
     <Column style={{ width: '100%' }}>
       <Column gap={40}>
-        <Column gap={10}>
-          <SectionText>Invitation</SectionText>
+        <Column gap={15}>
+          <SectionText>INVITATION</SectionText>
           <Row gap={10} style={{ justifyContent: 'center' }}>
-            <H2Text>{groomName}</H2Text>
+            <H1Text>{groomName}</H1Text>
             <H1Text>&</H1Text>
             <H1Text>{grideName}</H1Text>
           </Row>

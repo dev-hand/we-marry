@@ -1,9 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
+import { Flower } from 'components/common/Flower'
 
 export const MainCover: React.FC<{ thumbnail: string }> = ({ thumbnail }) => (
-  <>
+  <div style={{ position: 'relative' }}>
+    <Flower />
     <Image
       src={thumbnail}
       alt={thumbnail}
@@ -16,7 +18,7 @@ export const MainCover: React.FC<{ thumbnail: string }> = ({ thumbnail }) => (
     <div style={{ position: 'relative', height: 30 }}>
       <Gradation />
     </div>
-  </>
+  </div>
 )
 
 const Gradation = styled.div`

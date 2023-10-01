@@ -1,10 +1,9 @@
 import React from 'react'
 import Image from 'next/image'
-import { Column, Row } from 'components/common/Layout'
+import { Column } from 'components/common/Layout'
 import { H1Text, SectionText } from 'components/common/Text'
-import { getDiffDate, getFullWeddingDate } from 'global/format'
-import { Chip } from 'components/common/Chip'
-import moment from 'moment'
+import { getDiffDate } from 'global/format'
+import { Countdown } from 'components/Countdown'
 
 export const WeddingDay: React.FC<{
   weddingDate: string
@@ -20,27 +19,22 @@ export const WeddingDay: React.FC<{
 
   return (
     <Column gap={40} style={{ width: '100%' }}>
-      <Column gap={10}>
-        <SectionText>Wedding day</SectionText>
-        {/* <H1Text>{dDay}</H1Text> */}
-        <H1Text>{getFullWeddingDate(weddingDate)}</H1Text>
+      <Column gap={15}>
+        <SectionText>WEDDING DAY</SectionText>
+        <H1Text>{dDay}</H1Text>
       </Column>
-      <Column gap={20}>
-        <Row style={{ justifyContent: 'center' }}>
-          <Chip>{moment(new Date(weddingDate)).format('YYYY년 M월')}</Chip>
-        </Row>
-        <div>
-          <Image
-            src={calendarImage}
-            alt='calendar'
-            width={353}
-            height={220}
-            objectFit='cover'
-            layout='responsive'
-            priority
-          />
-        </div>
-      </Column>
+      <div>
+        <Image
+          src={calendarImage}
+          alt='calendar'
+          width={353}
+          height={220}
+          objectFit='cover'
+          layout='responsive'
+          priority
+        />
+      </div>
+      <Countdown weddingDate={weddingDate} />
     </Column>
   )
 }

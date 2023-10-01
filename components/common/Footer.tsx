@@ -77,7 +77,6 @@ export const Footer: React.FC<{
         </Link>
       </DescText>
     </Column>
-    {/* <SignText>@MadeBySean</SignText> */}
   </MainContainer>
 )
 
@@ -86,7 +85,7 @@ const MainContainer = styled(Column)`
   width: 100%;
   align-items: center;
   padding: 40px 0;
-  background-color: ${(p) => p.theme.color.secondary};
+  background-color: #fff9f6;
 `
 
 const BtnWrapper = styled(Row)`
