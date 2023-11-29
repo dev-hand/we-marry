@@ -15,11 +15,11 @@ const Item: React.FC<{
 }> = ({ bankName, accountNumber, name }) => (
   <AccountSelectItem>
     <Column gap={15} style={{ alignItems: 'start' }}>
+      <BaseText>{name}</BaseText>
       <BaseText>
         {bankName} <span style={{ color: theme.color.gray }}>|</span>{' '}
         {accountNumber}
       </BaseText>
-      <BaseText>{name}</BaseText>
     </Column>
     <CopyBtn text={accountNumber} />
   </AccountSelectItem>

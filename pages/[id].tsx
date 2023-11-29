@@ -60,7 +60,6 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
     groomPhoneNumber,
     weddingDate,
     message,
-    calendarImage,
     trafficInfo,
   }: PostProps = JSON.parse(post[index])
   return (
@@ -76,7 +75,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
       <Frame>
         <BoxShadow>
           <MainCover thumbnail={thumbnail} />
-          <Content>
+          <Content style={{ paddingTop: 30 }}>
             <Invitation
               message={message}
               grideName={grideName}
@@ -87,20 +86,27 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
               groomParentsName={groomParentsName}
               groomPhoneNumber={groomPhoneNumber}
             />
-            <Line />
-            <WeddingDay
-              weddingDate={weddingDate}
-              calendarImage={calendarImage}
-            />
-            <Line />
+          </Content>
+          <Line style={{ border: 0 }} />
+          <WeddingDay
+            weddingDate={weddingDate}
+            location={location}
+            address={address}
+          />
+          <Line style={{ border: 0 }} />
+          <Content>
             <Gallery images={images} />
-            <Line />
+          </Content>
+          <Line />
+          <Content>
             <Location
               location={location}
               address={address}
               trafficInfo={trafficInfo}
             />
-            <Line />
+          </Content>
+          <Line />
+          <Content style={{ paddingBottom: 80 }}>
             <Account grideAccount={grideAccount} groomAccount={groomAccount} />
           </Content>
           <Footer
@@ -139,14 +145,14 @@ const BoxShadow = styled.div`
 `
 
 const Content = styled(Column)`
-  padding: 20px 20px 80px;
+  padding: 0 20px;
   align-items: center;
   text-align: center;
 `
 
 const Line = styled.div`
-  width: 100%;
-  margin: 80px 0;
+  width: 90%;
+  margin: 80px auto;
   border: 0.5px solid ${(p) => p.theme.color.lightGray};
 `
 

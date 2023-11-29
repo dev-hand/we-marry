@@ -1,40 +1,39 @@
 import React from 'react'
-import Image from 'next/image'
-import { Column } from 'components/common/Layout'
-import { H3Text, SectionText } from 'components/common/Text'
-import { getDiffDate } from 'global/format'
-import { Countdown } from 'components/Countdown'
+import styled from 'styled-components'
+import { Column, Row } from 'components/common/Layout'
+import { H2Text, H3Text } from 'components/common/Text'
+import { getFullWeddingDate } from 'global/format'
+import { CopyBtn } from 'components/CopyBtn'
 
 export const WeddingDay: React.FC<{
   weddingDate: string
-  calendarImage: string
-}> = ({ weddingDate, calendarImage }) => {
-  const diffDate = getDiffDate(new Date().toString(), weddingDate)
-  const dDay =
-    diffDate === 0
-      ? '오늘 결혼합니다.'
-      : diffDate < 0
-      ? '결혼식이 지났습니다.'
-      : `결혼식까지 ${diffDate}일 남았습니다.`
-
-  return (
-    <Column gap={40} style={{ width: '100%' }}>
+  location: string
+  address: string
+}> = ({ weddingDate, location, address }) => (
+  <Main>
+    <Column gap={30}>
+      <H2Text>{getFullWeddingDate(weddingDate)}</H2Text>
       <Column gap={15}>
-        <SectionText>WEDDING DAY</SectionText>
-        <Countdown weddingDate={weddingDate} />
+        <DescText>{location}</DescText>
+        <Row
+          gap={10}
+          style={{ justifyContent: 'center', alignItems: 'center' }}
+        >
+          <DescText>{address}</DescText>
+          <CopyBtn text={address} />
+        </Row>
       </Column>
-      <div>
-        <Image
-          src={calendarImage}
-          alt='calendar'
-          width={353}
-          height={220}
-          objectFit='cover'
-          layout='responsive'
-          priority
-        />
-      </div>
-      <H3Text>{dDay}</H3Text>
     </Column>
-  )
-}
+  </Main>
+)
+
+const Main = styled(Column)`
+  gap: 40px;
+  padding: 80px 0;
+  align-items: center;
+  background-color: ${(p) => p.theme.color.secondary}88;
+`
+
+const DescText = styled(H3Text)`
+  color: ${(p) => p.theme.color.darkGray};
+`

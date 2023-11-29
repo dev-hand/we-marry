@@ -41,12 +41,12 @@ export const ImageSlider: React.FC<{
   if (!isOpen) return null
 
   const handlePrev = () => {
-    if (selectedIndex === 0) return
+    if (selectedIndex === 0) return setSelectedIndex(images.length - 1)
     setSelectedIndex((prev) => prev - 1)
   }
 
   const handleNext = () => {
-    if (images.length === selectedIndex + 1) return
+    if (images.length === selectedIndex + 1) return setSelectedIndex(0)
     setSelectedIndex((prev) => prev + 1)
   }
 
@@ -85,7 +85,7 @@ const Background = styled(Column)`
   width: 100%;
   height: 100%;
   justify-content: center;
-  background-color: #000000;
+  background-color: #000000dd;
   z-index: 100;
 `
 

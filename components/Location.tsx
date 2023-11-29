@@ -57,6 +57,7 @@ const DescText = styled(H3Text)`
 `
 
 const SubText = styled(BaseText)`
+  width: 80%;
   text-align: start;
   line-height: 28px;
   color: ${(p) => p.theme.color.darkGray};

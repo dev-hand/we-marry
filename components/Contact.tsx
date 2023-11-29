@@ -1,16 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Column, ColumnCenter, Row } from 'components/common/Layout'
+import { Column, ColumnCenter, RowCenter } from 'components/common/Layout'
 import { H3Text } from 'components/common/Text'
 import { PhoneNumber } from 'global/type'
 import { CopyBtn } from 'components/CopyBtn'
+import { TelBtn } from './TelBtn'
 
 export const Contact: React.FC<{
   groomPhoneNumber: PhoneNumber[]
   gridePhoneNumber: PhoneNumber[]
 }> = ({ gridePhoneNumber, groomPhoneNumber }) => (
-  <ColumnCenter gap={40} style={{ paddingTop: 40 }}>
-    <ColumnCenter gap={40}>
+  <ColumnCenter gap={60} vertical={40}>
+    <ColumnCenter gap={30}>
       <SectionText>신랑측</SectionText>
       <Column gap={20}>
         {groomPhoneNumber.map((item, index) => (
@@ -18,7 +19,7 @@ export const Contact: React.FC<{
         ))}
       </Column>
     </ColumnCenter>
-    <ColumnCenter gap={40}>
+    <ColumnCenter gap={30}>
       <SectionText>신부측</SectionText>
       <Column gap={20}>
         {gridePhoneNumber.map((item, index) => (
@@ -33,10 +34,11 @@ const Item: React.FC<{ name: string; phoneNumber: string }> = ({
   name,
   phoneNumber,
 }) => (
-  <Row key={name} gap={15}>
+  <RowCenter key={name} gap={15}>
     <NameText>{name}</NameText>
     <CopyBtn text={phoneNumber} />
-  </Row>
+    <TelBtn phoneNumber={phoneNumber} />
+  </RowCenter>
 )
 
 const SectionText = styled(H3Text)`

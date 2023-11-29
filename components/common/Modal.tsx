@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { Column, Media } from 'components/common/Layout'
 import { Card } from 'components/common/Card'
-import { BaseText } from 'components/common/Text'
+import { BackgroundImage } from 'components/common/Image'
 
 export const Modal: React.FC<{
   children: React.ReactChild
@@ -17,8 +17,8 @@ export const Modal: React.FC<{
           screenWidth={screen.width}
           onClick={(e) => e.stopPropagation()}
         >
+          <CloseBtn src='/icon/x-black.svg' onClick={onClose} />
           {children}
-          <CloseBtnText onClick={onClose}>닫기</CloseBtnText>
         </ModalCard>
       </Container>
     </Background>
@@ -32,7 +32,7 @@ const Background = styled(Column)`
   width: 100%;
   height: 100%;
   justify-content: center;
-  background-color: rgba(72, 72, 72, 0.2);
+  background-color: rgba(72, 72, 72, 50%);
   z-index: 2;
 `
 
@@ -61,10 +61,11 @@ const ModalCard = styled(Card)<{ screenWidth: number }>`
   animation: modalFadeUp 0.8s ease;
 `
 
-const CloseBtnText = styled(BaseText)`
-  padding: 40px 0;
-  text-decoration: underline;
-  span {
-    cursor: pointer;
-  }
+const CloseBtn = styled(BackgroundImage)`
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
 `
