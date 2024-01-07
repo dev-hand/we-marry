@@ -96,7 +96,6 @@ const BtnWrapper = styled(Row)`
 
 const DescText = styled(SmallText)`
   color: ${(p) => p.theme.color.darkGray};
-  line-height: 22px;
   text-align: center;
   a {
     color: ${(p) => p.theme.color.black};

@@ -18,6 +18,7 @@ import { Footer } from 'components/common/Footer'
 import { Location } from 'components/Location'
 import { getFullWeddingDate } from 'global/format'
 import { Account } from 'components/Account'
+import { Message } from 'components/Message'
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
@@ -35,15 +36,31 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string
-  const data = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/data?key=${GOOGLE_SHEET_API_KEY}`,
+  const post = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/post?key=${GOOGLE_SHEET_API_KEY}`,
+  ).then((res) => res.json())
+  const comments = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/comments?key=${GOOGLE_SHEET_API_KEY}`,
   ).then((res) => res.json())
   return {
-    props: { id, post: data.values },
+    props: { id, post: post.values, comments: comments.values },
   }
 }
 
-const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
+const Post: NextPage<{ id: string; post: string[]; comments: string[][] }> = ({
+  id,
+  post,
+  comments: commentsData,
+}) => {
+  const comments: Record<string, any> = []
+  commentsData.forEach((item, index) => {
+    if (index === 0) return
+    const obj: Record<string, any> = {}
+    item.forEach((_item, _index) => {
+      obj[commentsData[0][_index]] = _item
+    })
+    comments.push(obj)
+  })
   const index = postIds.indexOf(id)
   const {
     grideAccount,
@@ -88,11 +105,7 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
             />
           </Content>
           <Line style={{ border: 0 }} />
-          <WeddingDay
-            weddingDate={weddingDate}
-            location={location}
-            address={address}
-          />
+          <WeddingDay weddingDate={weddingDate} />
           <Line style={{ border: 0 }} />
           <Content>
             <Gallery images={images} />
@@ -104,6 +117,9 @@ const Post: NextPage<{ id: string; post: string[] }> = ({ id, post }) => {
               address={address}
               trafficInfo={trafficInfo}
             />
+          </Content>
+          <Content>
+            <Message comments={comments} />
           </Content>
           <Line />
           <Content style={{ paddingBottom: 80 }}>

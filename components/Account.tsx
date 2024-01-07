@@ -5,8 +5,8 @@ import { BackgroundImage } from 'components/common/Image'
 import { BaseText, H1Text } from 'components/common/Text'
 import { Select, SelectItem } from 'components/common/Select'
 import { Account as AccountProps } from 'global/type'
-import { CopyBtn } from 'components/CopyBtn'
 import { theme } from 'styles/theme'
+import { CopyBtn } from 'components/common/Button'
 
 const Item: React.FC<{
   bankName: string

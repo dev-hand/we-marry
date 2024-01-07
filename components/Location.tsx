@@ -3,8 +3,8 @@ import styled from 'styled-components'
 import { Column, Row } from 'components/common/Layout'
 import { BaseText, H1Text, H3Text, SectionText } from 'components/common/Text'
 import { Map } from 'components/Map'
-import { CopyBtn } from 'components/CopyBtn'
 import { TrafficInfo } from 'global/type'
+import { CopyBtn } from 'components/common/Button'
 
 export const Location: React.FC<{
   location: string
@@ -59,7 +59,6 @@ const DescText = styled(H3Text)`
 const SubText = styled(BaseText)`
   width: 80%;
   text-align: start;
-  line-height: 28px;
   color: ${(p) => p.theme.color.darkGray};
 `
 

@@ -23,12 +23,13 @@ export const getWeekDay = (date: string) => {
 export const getFullWeddingDate = (date: string) => {
   const _date = new Date(date)
   const momentDate = moment(_date)
+  const year = momentDate.format('YYYY년')
   const day = momentDate.format('M월 D일')
   const week = getWeekDay(date) + '요일'
   const hour = momentDate.format('H시')
   const time = _date.getMinutes() === 0 ? '' : _date.getMinutes() + '분'
   const amOrPm = momentDate.format('A') === 'PM' ? '오후' : '오전'
-  const fullDate = `${day} ${week} ${amOrPm} ${hour} ${time}`
+  const fullDate = `${year} ${day} ${week} ${amOrPm} ${hour} ${time}`
 
   return fullDate
 }

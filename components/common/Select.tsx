@@ -9,7 +9,7 @@ export const Select: React.FC<{
   title: string
 }> = ({ children, title }) => {
   const [isOpen, setIsOpen] = useState(false)
-  const optionHeight = 88 * children.length
+  const optionHeight = 104 * children.length
   return (
     <Column>
       <Dropdown isOpen={isOpen} onClick={() => setIsOpen((prev) => !prev)}>

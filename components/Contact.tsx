@@ -3,8 +3,7 @@ import styled from 'styled-components'
 import { Column, ColumnCenter, RowCenter } from 'components/common/Layout'
 import { H3Text } from 'components/common/Text'
 import { PhoneNumber } from 'global/type'
-import { CopyBtn } from 'components/CopyBtn'
-import { TelBtn } from './TelBtn'
+import { CopyBtn, SmsBtn, TelBtn } from 'components/common/Button'
 
 export const Contact: React.FC<{
   groomPhoneNumber: PhoneNumber[]
@@ -36,8 +35,8 @@ const Item: React.FC<{ name: string; phoneNumber: string }> = ({
 }) => (
   <RowCenter key={name} gap={15}>
     <NameText>{name}</NameText>
-    <CopyBtn text={phoneNumber} />
     <TelBtn phoneNumber={phoneNumber} />
+    <SmsBtn phoneNumber={phoneNumber} />
   </RowCenter>
 )
 
@@ -47,4 +46,5 @@ const SectionText = styled(H3Text)`
 
 const NameText = styled(H3Text)`
   width: 80px;
+  text-align: start;
 `

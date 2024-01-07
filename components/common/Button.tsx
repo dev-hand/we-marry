@@ -1,4 +1,6 @@
 import styled from 'styled-components'
+import { handleCopy } from 'global/handler'
+import { BackgroundImage } from 'components/common/Image'
 
 export const Button = styled.button`
   width: 100%;
@@ -16,4 +18,46 @@ export const Button = styled.button`
   :focus {
     outline: none;
   }
+`
+
+export const TelBtn: React.FC<{ phoneNumber: string }> = ({ phoneNumber }) => (
+  <a href={`tel:${phoneNumber}`}>
+    <MainButton>
+      <BackgroundImage
+        src='/icon/phone.svg'
+        style={{ width: 16, height: 16 }}
+      />
+      전화
+    </MainButton>
+  </a>
+)
+
+export const SmsBtn: React.FC<{ phoneNumber: string }> = ({ phoneNumber }) => (
+  <a href={`sms:${phoneNumber}`}>
+    <MainButton>
+      <BackgroundImage src='/icon/mail.svg' style={{ width: 16, height: 16 }} />
+      문자
+    </MainButton>
+  </a>
+)
+
+export const CopyBtn: React.FC<{ text: string }> = ({ text }) => (
+  <MainButton onClick={() => handleCopy(text)}>
+    <BackgroundImage src='/icon/copy.svg' style={{ width: 16, height: 16 }} />
+    복사
+  </MainButton>
+)
+
+const MainButton = styled(Button)`
+  display: flex;
+  width: fit-content;
+  height: fit-content;
+  align-items: center;
+  gap: 2px;
+  padding: 1px 6px;
+  border: 0;
+  border-radius: 4px;
+  background-color: ${(p) => p.theme.color.lightGray};
+  font-size: 13px;
+  color: ${(p) => p.theme.color.darkGray};
 `

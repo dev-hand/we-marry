@@ -22,7 +22,7 @@ h4,
 h5,
 span,
 p {
-  line-height: normal;
+  line-height: inherit;
   white-space: pre-wrap;
   color: #484848;
 }
