@@ -69,7 +69,7 @@ export const Footer: React.FC<{
       </BtnWrapper>
     </Column>
     <Column>
-      <DescText>재능 기부 목적으로 만든 무료 청첩장입니다.</DescText>
+      <DescText>무료로 모바일 청첩장을 제작해 드리고 있습니다.</DescText>
       <DescText>
         서비스 문의는{' '}
         <Link href='https://open.kakao.com/o/sYlYAfyf'>
@@ -94,7 +94,7 @@ const BtnWrapper = styled(Row)`
   cursor: pointer;
 `
 
-const DescText = styled(SmallText)`
+const DescText = styled(BaseText)`
   color: ${(p) => p.theme.color.darkGray};
   text-align: center;
   a {

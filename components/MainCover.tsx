@@ -1,11 +1,11 @@
 import React from 'react'
 import styled from 'styled-components'
 import Image from 'next/image'
-import { Flower } from 'components/common/Flower'
+// import { Flower } from 'components/common/Flower'
 
 export const MainCover: React.FC<{ thumbnail: string }> = ({ thumbnail }) => (
   <div style={{ position: 'relative' }}>
-    <Flower />
+    {/* <Flower /> */}
     <Image
       src={thumbnail}
       alt={thumbnail}

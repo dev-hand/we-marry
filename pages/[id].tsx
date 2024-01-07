@@ -36,26 +36,26 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const id = context.params?.id as string
-  const post = await fetch(
-    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/post?key=${GOOGLE_SHEET_API_KEY}`,
+  const posts = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/posts?key=${GOOGLE_SHEET_API_KEY}`,
   ).then((res) => res.json())
   const comments = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/comments?key=${GOOGLE_SHEET_API_KEY}`,
   ).then((res) => res.json())
   return {
-    props: { id, post: post.values, comments: comments.values },
+    props: { id, posts: posts.values, comments: comments.values },
   }
 }
 
-const Post: NextPage<{ id: string; post: string[]; comments: string[][] }> = ({
+const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
   id,
-  post,
+  posts,
   comments: commentsData,
 }) => {
-  const comments: Record<string, any> = []
+  const comments: any[] = []
   commentsData.forEach((item, index) => {
     if (index === 0) return
-    const obj: Record<string, any> = {}
+    const obj: any = {}
     item.forEach((_item, _index) => {
       obj[commentsData[0][_index]] = _item
     })
@@ -78,7 +78,7 @@ const Post: NextPage<{ id: string; post: string[]; comments: string[][] }> = ({
     weddingDate,
     message,
     trafficInfo,
-  }: PostProps = JSON.parse(post[index])
+  }: PostProps = JSON.parse(posts[index])
   return (
     <>
       <Seo
@@ -118,6 +118,7 @@ const Post: NextPage<{ id: string; post: string[]; comments: string[][] }> = ({
               trafficInfo={trafficInfo}
             />
           </Content>
+          <Line />
           <Content>
             <Message comments={comments} />
           </Content>
