@@ -40,6 +40,7 @@ const Option = styled(Column)<{ height: number }>`
   .selectItem:not(:last-child) {
     border-bottom: 1px solid ${(p) => p.theme.color.lightGray};
   }
+  background-color: #ffffff;
   animation: optionDropdown 0.5s 1 ease;
   overflow: hidden;
   @keyframes optionDropdown {

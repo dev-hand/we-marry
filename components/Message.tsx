@@ -41,7 +41,7 @@ const CommentCard = styled(Card)`
   padding: 15px;
   border-radius: 16px;
   align-items: flex-start;
-  background-color: rgba(216, 190, 178, 0.15);
+  background-color: ${(p) => p.theme.color.secondary};
 `
 
 const CommentTop = styled(Row)`

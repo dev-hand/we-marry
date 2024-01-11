@@ -9,7 +9,7 @@ export const Button = styled.button`
   border: 1px solid ${(p) => p.theme.color.gray};
   font-size: ${(p) => p.theme.size.default};
   color: ${(p) => p.theme.color.black};
-  background-color: ${(p) => p.theme.color.white};
+  background-color: #ffffff;
   cursor: pointer;
   transition: 0.2s;
   :active {
@@ -57,7 +57,6 @@ const MainButton = styled(Button)`
   padding: 1px 6px;
   border: 0;
   border-radius: 4px;
-  background-color: ${(p) => p.theme.color.lightGray};
   font-size: 13px;
   color: ${(p) => p.theme.color.darkGray};
 `

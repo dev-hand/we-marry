@@ -9,12 +9,13 @@ export interface PostProps {
   location: string
   groomAccount: Account[]
   grideAccount: Account[]
-  weddingDate: string
+  marriageAt: string
   message: string
   groomPhoneNumber: PhoneNumber[]
   gridePhoneNumber: PhoneNumber[]
   calendarImage: string
   trafficInfo: TrafficInfo
+  password: number
 }
 
 export interface ParentsName {

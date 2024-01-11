@@ -8,7 +8,7 @@ const size = {
 
 const color = {
   primary: '#967869',
-  secondary: '#F8ECE7',
+  secondary: 'rgba(216, 190, 178, 0.15)',
   white: '#FEFEFE',
   black: '#484848',
   lightGray: '#EBEBEB',

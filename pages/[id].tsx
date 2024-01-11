@@ -20,6 +20,8 @@ import { getFullWeddingDate } from 'global/format'
 import { Account } from 'components/Account'
 import { Message } from 'components/Message'
 
+// TODO: 청첩장 양식 폼 받아서 화면에 출력하기
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const paths = postIds.map((id) => {
     return {
@@ -42,16 +44,26 @@ export const getStaticProps: GetStaticProps = async (context) => {
   const comments = await fetch(
     `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/comments?key=${GOOGLE_SHEET_API_KEY}`,
   ).then((res) => res.json())
+  const weddings = await fetch(
+    `https://sheets.googleapis.com/v4/spreadsheets/${GOOGLE_SPREAD_SHEET_ID}/values/weddings?key=${GOOGLE_SHEET_API_KEY}`,
+  ).then((res) => res.json())
   return {
-    props: { id, posts: posts.values, comments: comments.values },
+    props: {
+      id,
+      posts: posts.values,
+      comments: comments.values,
+      weddings: weddings.values,
+    },
   }
 }
 
-const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
-  id,
-  posts,
-  comments: commentsData,
-}) => {
+const Post: NextPage<{
+  id: string
+  posts: string[]
+  comments: string[][]
+  weddings: string[]
+}> = ({ id, posts, comments: commentsData, weddings }) => {
+  console.log(weddings)
   const comments: any[] = []
   commentsData.forEach((item, index) => {
     if (index === 0) return
@@ -75,7 +87,7 @@ const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
     grideParentsName,
     gridePhoneNumber,
     groomPhoneNumber,
-    weddingDate,
+    marriageAt,
     message,
     trafficInfo,
   }: PostProps = JSON.parse(posts[index])
@@ -83,9 +95,7 @@ const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
     <>
       <Seo
         title={`${groomName} ♥︎ ${grideName} 결혼합니다`}
-        description={`${getFullWeddingDate(
-          weddingDate,
-        )} ${address} ${location}`}
+        description={`${getFullWeddingDate(marriageAt)} ${address} ${location}`}
         image={`${PREFIX}/${thumbnail}`}
         url={`${PREFIX}/${id}`}
       />
@@ -104,9 +114,11 @@ const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
               groomPhoneNumber={groomPhoneNumber}
             />
           </Content>
-          <Line style={{ border: 0 }} />
-          <WeddingDay weddingDate={weddingDate} />
-          <Line style={{ border: 0 }} />
+          <Line />
+          <Content>
+            <WeddingDay marriageAt={marriageAt} />
+          </Content>
+          <Line />
           <Content>
             <Gallery images={images} />
           </Content>
@@ -133,7 +145,7 @@ const Post: NextPage<{ id: string; posts: string[]; comments: string[][] }> = ({
             thumbnail={thumbnail}
             address={address}
             location={location}
-            weddingDate={weddingDate}
+            marriageAt={marriageAt}
           />
         </BoxShadow>
       </Frame>
@@ -165,6 +177,7 @@ const Content = styled(Column)`
   padding: 0 20px;
   align-items: center;
   text-align: center;
+  background-color: ${(p) => p.theme.color.white};
 `
 
 const Line = styled.div`

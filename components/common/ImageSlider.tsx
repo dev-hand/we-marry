@@ -52,7 +52,7 @@ export const ImageSlider: React.FC<{
 
   return (
     <Background onClick={onClose}>
-      <CloseBtn src='/icon/x-white.svg' />
+      <CloseBtn src='/icon/x-black.svg' />
       <Media onClick={(e) => e.stopPropagation()}>
         <GalleryImage
           src={images[selectedIndex]}
@@ -85,7 +85,7 @@ const Background = styled(Column)`
   width: 100%;
   height: 100%;
   justify-content: center;
-  background-color: #000000dd;
+  background-color: ${(p) => p.theme.color.white};
   z-index: 100;
 `
 
@@ -113,6 +113,4 @@ const CloseBtn = styled(BackgroundImage)`
   cursor: pointer;
 `
 
-const PageText = styled(H3Text)`
-  color: ${(p) => p.theme.color.white};
-`
+const PageText = styled(H3Text)``

@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import Link from 'next/link'
 import { Column, Row } from 'components/common/Layout'
 import { BackgroundImage } from 'components/common/Image'
-import { BaseText, SmallText } from 'components/common/Text'
+import { BaseText } from 'components/common/Text'
 import { PREFIX } from 'global/constant'
 import { handleCopy } from 'global/handler'
 import { getFullWeddingDate } from 'global/format'
@@ -15,7 +15,7 @@ export const Footer: React.FC<{
   thumbnail: string
   address: string
   location: string
-  weddingDate: string
+  marriageAt: string
 }> = ({
   id,
   groomName,
@@ -23,7 +23,7 @@ export const Footer: React.FC<{
   thumbnail,
   address,
   location,
-  weddingDate,
+  marriageAt,
 }) => (
   <MainContainer>
     <Column gap={20}>
@@ -34,7 +34,7 @@ export const Footer: React.FC<{
             content: {
               title: `${groomName} ♥︎ ${grideName} 결혼합니다`,
               description: `${getFullWeddingDate(
-                weddingDate,
+                marriageAt,
               )} ${address} ${location}`,
               imageUrl: `${PREFIX}/${thumbnail}`,
               link: {
@@ -85,7 +85,7 @@ const MainContainer = styled(Column)`
   width: 100%;
   align-items: center;
   padding: 40px 0;
-  background-color: #fff9f6;
+  background-color: ${(p) => p.theme.color.secondary};
 `
 
 const BtnWrapper = styled(Row)`
